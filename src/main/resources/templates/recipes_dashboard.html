@@ -8,93 +8,20 @@
     <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
     <meta property="description"
         content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
-    <link rel="icon" type="image/x-icon" href="images/icon.png">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
-    <title>Да сготвим - Рецепти</title>
-    <script src="src/app.js" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <script src="/js/app.js" type="module"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Да сготвим - Рецепти</title>
 </head>
 
 <body>
-    <divi id="food-container">
-        <!-- Navigation -->
-        <header>
-            <ul id="nav">
-                <li><a id="icon" class="active" href="index.html">
-                        <img id="logo" src="images/logo.png" alt="logo">
-                    </a></li>
-                <li><a href="javascript:void(0)">Закуска &#x2771;
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="закуска">Закуски</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="баница">Баници</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="паста">Паста</a>
-                            </li>
-                        </ul>
-                    </a></li>
-                <li><a href="javascript:void(0)">Обяд &#x2771;
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="крем супа">Крем супи</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="супа">Супи и чорби</a>
-                            </li>
-                        </ul>
-                    </a></li>
-                <li><a href="javascript:void(0)">Вечеря &#x2771;
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="0">Ястия с месо</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="1">Ястия без месо</a>
-                            </li>
-                        </ul>
-                    </a></li>
-                <li><a href="javascript:void(0)">Десерт &#x2771;
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="крем">Кремове</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="кекс">Кексове</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="сладкиш">Сладкиши</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-by-subcat" name="торта">Торти</a>
-                            </li>
-                        </ul>
-                    </a></li>
-                <!-- Guest users -->
-                <li style="width: 100px; float: right; margin-right: 10px;" class="guest">
-                    <a href="register.html">Регистрация</a>
-                </li>
-                <li style="width: 100px; float: right" class="guest">
-                    <a href="login.html">Вход</a>
-                </li>
-                <!-- Logged users -->
-                <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a id="logoutBtn" href="javascript:void(0)">Излизане</a>
-                </li>
-                <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a href="#">Любими рецепти</a>
-                </li>
-                <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a href="#">Моите рецепти</a>
-                </li>
-                <li style="width: 90px; float: right; margin-right: 50px;" class="profile">
-                    <p style="display: inline;" id="welcome"></p>
-                </li>
-            </ul>
-        </header>
+    <div id="food-container">
+
+        <div th:replace="fragments/navbar">Navbar</div>
+
         </div>
         <hr style="width:100%;text-align:left;margin-left:0">
         <!-- FOOD MENU SECTION -->

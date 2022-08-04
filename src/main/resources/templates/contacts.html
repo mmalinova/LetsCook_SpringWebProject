@@ -8,78 +8,79 @@
     <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
     <meta property="description"
         content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
-    <link rel="icon" type="image/x-icon" href="images/icon.png">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Да сготвим - Контакти</title>
-    <script src="src/contact.js" type="module"></script>
+    <script src="/js/contact.js" type="module"></script>
 </head>
 
 <body id="contact-body">
-    <section id="contact">
+    <div id="container">
 
-        <h2 class="section-header">Свържи се с нас&#10083;&#65039;</h2>
+        <div th:replace="fragments/navbar">Navbar</div>
 
-        <div class="contact-wrapper">
+        <section id="contact">
+            <h2 class="section-header">Свържи се с нас&#10083;&#65039;</h2>
+            <div class="contact-wrapper">
 
-            <!-- Left contact page -->
-            <form id="contact_form" class="contact-form" method="post">
-                <input type="email" name="email" id="email" placeholder="Въведи имейла си">
-                <input type="text" name="name" id="name" placeholder="Въведи името си">
-                <textarea name="mess" id="message" cols="30" rows="10" placeholder="Въведи съобщение"></textarea>
-                <input id="contact_submit" type="submit" value="Изпрати">
-            </form>
+                <!-- Left contact page -->
+                <form id="contact_form" class="contact-form" method="post">
+                    <input type="email" name="email" id="email" placeholder="Въведи имейла си">
+                    <input type="text" name="name" id="name" placeholder="Въведи името си">
+                    <textarea name="mess" id="message" cols="30" rows="10" placeholder="Въведи съобщение"></textarea>
+                    <input id="contact_submit" type="submit" value="Изпрати">
+                </form>
 
-            <!-- Right contact page -->
-            <div class="direct-contact-container">
+                <!-- Right contact page -->
+                <div class="direct-contact-container">
 
-                <ul class="contact-list">
-                    <li class="contact-list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">Да
+                    <ul class="contact-list">
+                        <li class="contact-list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">Да
                                 сготвим!&#129369;</span></i></li>
-                    <li class="contact-list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
+                        <li class="contact-list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
                                     href="tel:1-212-555-5555" title="Give me a call">(+359) 896-51-8009</a></span></i>
-                    </li>
+                        </li>
 
-                    <li class="contact-list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
+                        <li class="contact-list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
                                     href="mailto:#" title="Изпрати ми имейл">malinova29@gmail.com</a></span></i></li>
 
-                </ul>
+                    </ul>
+                </div>
+
             </div>
+        </section>
 
-        </div>
-
-    </section>
-
-    <footer>
-        <hr style="width:100%;text-align:left;margin-left:0;">
-        <div class="footer">
-            <a href="index.html">Начало</a>
-            <a href="./info">Информация</a>
-            <a href="./terms_of_use">Условия за ползване</a>
-            <a href="./data_policy">Политика за поверителност на данните</a>
-            <a href="./contacts">Контакти/За реклама</a>
-        </div>
-        <br>
-        <ul id="social-media">
-            <li>
-                <p>2021 &copy; dasgotvim.com</p>
-            </li>
-            <li>
-                <a href="https://www.facebook.com/mihaela.malinova.98/">
-                    <img src="images/facebook.svg" alt="facebook icon">
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/mihaellamalinova/">
-                    <img src="images/instagram.svg" alt="instagram icon">
-                </a>
-            </li>
-            <li>
-                <a href="https://www.linkedin.com/in/mihaela-malinova-72352319a/">
-                    <img src="images/linkedin.svg" alt="linkedIn icon">
-                </a>
-            </li>
-        </ul>
-    </footer>
+        <footer>
+            <hr style="width:100%;text-align:left;margin-left:0;">
+            <div class="footer">
+                <a href="index.html">Начало</a>
+                <a href="./info">Информация</a>
+                <a href="./terms_of_use">Условия за ползване</a>
+                <a href="./data_policy">Политика за поверителност на данните</a>
+                <a href="./contacts">Контакти/За реклама</a>
+            </div>
+            <br>
+            <ul id="social-media">
+                <li>
+                    <p>2021 &copy; dasgotvim.com</p>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/mihaela.malinova.98/">
+                        <img src="images/facebook.svg" alt="facebook icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/mihaellamalinova/">
+                        <img src="images/instagram.svg" alt="instagram icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/mihaela-malinova-72352319a/">
+                        <img src="images/linkedin.svg" alt="linkedIn icon">
+                    </a>
+                </li>
+            </ul>
+        </footer>
     </div>
 </body>
 

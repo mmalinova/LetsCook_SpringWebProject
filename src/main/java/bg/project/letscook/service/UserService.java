@@ -1,6 +1,7 @@
 package bg.project.letscook.service;
 
 import bg.project.letscook.model.dto.UserLoginDTO;
+import bg.project.letscook.model.dto.UserRegisterDTO;
 import bg.project.letscook.model.entity.UserEntity;
 import bg.project.letscook.repository.UserRepository;
 import bg.project.letscook.user.CurrentUser;
@@ -46,5 +47,19 @@ public class UserService {
 
     public void logout() {
         currentUser.clear();
+    }
+
+    public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
+        UserEntity userToRegister = new UserEntity();
+        userToRegister.setEmail(userRegisterDTO.getEmail());
+        userToRegister.setActive(true);
+        userToRegister.setFirstName(userRegisterDTO.getFirstName());
+        userToRegister.setLastName(userRegisterDTO.getLastName());
+        userToRegister.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
+
+        userToRegister = userRepository.save(userToRegister);
+
+        //login
+        currentUser.login(userToRegister.getFirstName());
     }
 }
