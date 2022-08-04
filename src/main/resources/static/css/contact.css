@@ -1,0 +1,108 @@
+#contact-body {
+    background-image: url(../images/contact.jpg);
+    background-size: cover;
+    background-image: no-repeat;
+}
+.contact-form input {
+    width: 100%;
+    margin: 5px 0;
+    height: 35px;
+    font-size: 17px;
+    text-align: center;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    background: rgb(235, 228, 228);
+}
+
+#message {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 17px;
+    text-align: center;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    background: rgb(235, 228, 228);
+}
+
+#contact_submit {
+    padding: 8px;
+    background: rgb(255, 221, 158);
+    color: black;
+    cursor: pointer;
+}
+
+#contact_submit:hover {
+    background: rgb(252, 239, 124);
+    color: white;
+}
+
+#contact {
+    width: 100%;
+    height: 100%;
+}
+
+.section-header {
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
+    color: rgb(255, 221, 158);
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    max-width: 850px;
+}
+
+.direct-contact-container {
+    max-width: 400px;
+}
+
+.contact-list {
+    list-style-type: none;
+    margin-left: -30px;
+    padding-right: 20px;
+}
+
+.contact-list-item {
+    line-height: 4;
+    color: #aaa;
+}
+
+.contact-text {
+    font: 300 18px 'Lato', sans-serif;
+    letter-spacing: 1.9px;
+    color: rgb(255, 221, 158);
+}
+
+.place {
+    margin-left: 62px;
+    font-weight: bold;
+}
+
+.phone {
+    margin-left: 56px;
+    font-weight: bold;
+}
+
+.gmail {
+    margin-left: 53px;
+    font-weight: bold;
+}
+
+.contact-text a {
+    color: rgb(255, 221, 158);
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+
+.contact-text a:hover {
+    color: #fff;
+    text-decoration: none;
+}

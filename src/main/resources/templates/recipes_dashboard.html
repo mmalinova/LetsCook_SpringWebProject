@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
+    <meta property="description"
+        content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
+    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Да сготвим - Рецепти</title>
+    <script src="src/app.js" type="module"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <divi id="food-container">
+        <!-- Navigation -->
+        <header>
+            <ul id="nav">
+                <li><a id="icon" class="active" href="index.html">
+                        <img id="logo" src="images/logo.png" alt="logo">
+                    </a></li>
+                <li><a href="javascript:void(0)">Закуска &#x2771;
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="закуска">Закуски</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="баница">Баници</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="паста">Паста</a>
+                            </li>
+                        </ul>
+                    </a></li>
+                <li><a href="javascript:void(0)">Обяд &#x2771;
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="крем супа">Крем супи</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="супа">Супи и чорби</a>
+                            </li>
+                        </ul>
+                    </a></li>
+                <li><a href="javascript:void(0)">Вечеря &#x2771;
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="0">Ястия с месо</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="1">Ястия без месо</a>
+                            </li>
+                        </ul>
+                    </a></li>
+                <li><a href="javascript:void(0)">Десерт &#x2771;
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="крем">Кремове</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="кекс">Кексове</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="сладкиш">Сладкиши</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="search-by-subcat" name="торта">Торти</a>
+                            </li>
+                        </ul>
+                    </a></li>
+                <!-- Guest users -->
+                <li style="width: 100px; float: right; margin-right: 10px;" class="guest">
+                    <a href="register.html">Регистрация</a>
+                </li>
+                <li style="width: 100px; float: right" class="guest">
+                    <a href="login.html">Вход</a>
+                </li>
+                <!-- Logged users -->
+                <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
+                    <a id="logoutBtn" href="javascript:void(0)">Излизане</a>
+                </li>
+                <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
+                    <a href="#">Любими рецепти</a>
+                </li>
+                <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile">
+                    <a href="#">Моите рецепти</a>
+                </li>
+                <li style="width: 90px; float: right; margin-right: 50px;" class="profile">
+                    <p style="display: inline;" id="welcome"></p>
+                </li>
+            </ul>
+        </header>
+        </div>
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <!-- FOOD MENU SECTION -->
+        <section id="recipes-section" class="bg-img bg-img-fixed">
+            <h2 id="cat-title" style="text-align: center;"></h2>
+            <div class="food-menu">
+                <div id="recipe-dashboard" class="food-item-wrap all">
+                    <!-- <div class="food-item lorem-type">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img"
+                                    style="background-image: url('assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg');">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                    </h3>
+                                    <span>
+                                    </span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class="bx bx-cart-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER SECTION -->
+        <footer>
+            <hr style="width:100%;text-align:left;margin-left:0;">
+            <div class="footer">
+                <a href="index.html">Начало</a>
+                <a href="info.html">Информация</a>
+                <a href="./terms_of_use">Условия за ползване</a>
+                <a href="./data_policy">Политика за поверителност на данните</a>
+                <a href="./contacts">Контакти/За реклама</a>
+            </div>
+            <br>
+            <ul id="social-media">
+                <li>
+                    <p>2021 &copy; dasgotvim.com</p>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/mihaela.malinova.98/">
+                        <img src="images/facebook.svg" alt="facebook icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/mihaellamalinova/">
+                        <img src="images/instagram.svg" alt="instagram icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/mihaela-malinova-72352319a/">
+                        <img src="images/linkedin.svg" alt="linkedIn icon">
+                    </a>
+                </li>
+            </ul>
+        </footer>
+</body>
+
+</html>

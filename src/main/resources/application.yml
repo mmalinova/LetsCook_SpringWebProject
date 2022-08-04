@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/letsCook?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    open-in-view: false
+  sql:
+    init:
+      mode: never
+
+#mail:
+#  host: "localhost"
+#  port: 1025
+#  username: "letsCook@letsCook.com"
+#  password: ""
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BisicBinder: TRACE

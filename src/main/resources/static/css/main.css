@@ -1,0 +1,115 @@
+body {
+    background-color: rgba(255, 218, 176, 0.89);
+    font-family: 'Lobster', cursive;
+}
+.search-by-product label {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+}
+.search-by-product button {
+    background-color: #f1f1f1;
+    border: none;
+    color: #7a7b7a;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+#site-content p, .recipe p {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    height: auto;
+}
+.recipe img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+.recipe img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.recipe ul a span {
+    font-family: 'Times New Roman', Times, serif;
+}
+#screen {
+    margin-top: 50px;
+    margin-left: 450px;
+    margin-right: auto;
+    width: 50%;
+    height: 280px;
+    width: 140px;
+}
+#download-btn {
+    margin-left: 40px;
+    margin-right: auto;
+    margin-bottom: 110px;
+    width: 50%;
+    height: 50px;
+    width: 140px;
+}
+table {
+    width: 100%;
+}
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.categories {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.categories a {
+    text-decoration: none;
+    color: rgb(58, 57, 57);
+}
+.cat {
+    display: inline-block;
+    margin-bottom: 25px;
+    position: relative;
+}
+.cat .iconHold {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -40px;
+}
+.iconHold img{
+    display: block;
+    width: 90px;
+    margin: 0 auto;
+}
+.iconHold img:hover, .cat img:hover{
+    opacity: 0.8;
+}
+.cat:hover span {
+    color: #ff7e00;
+}
+.iconHold {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -40px;
+}
+.iconHold img{
+    display: block;
+    width: 90px;
+    margin: 0 auto;
+}
+#last-added-recipes a {
+    margin-right: 4px;
+}
+#last-added-recipes a img {
+    margin-bottom: -10px;
+}
+@media screen and (max-width: 1001px) {
+    .cat {
+        margin-bottom: 50px;
+    }
+}

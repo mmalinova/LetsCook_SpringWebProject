@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
+    <meta property="description"
+        content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
+    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Да сготвим - Регистрация</title>
+    <script src="src/login-register.js" type="module"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Register Page -->
+    <section id="register">
+        <div class="container">
+            <a id="icon" href="index.html">
+                <img id="register_logo" src="images/lets_cook.png" alt="logo">
+            </a>
+            <form id="register-form" method="post">
+                <h1>Регистрация</h1>
+                <p>Моля, попълни формата по-долу, за да се регистрираш.</p>
+                <hr>
+
+                <p>Потребителско име</p>
+                <input type="text" placeholder="Въведи потребителско име" name="username">
+
+                <p>Имейл</p>
+                <input placeholder="Въведи своя имейл" name="email" type="text">
+
+                <p>Парола</p>
+                <input type="password" placeholder="Въведи парола" name="password">
+
+                <p>Повтори паролата</p>
+                <input type="password" placeholder="Повтори въведената парола" name="repeatPass">
+
+                <input type="submit" class="registerbtn" value="Регистриране">
+            </form>
+            <div class="signin">
+                <p>Вече имаш акаунт?
+                    <a href="login.html">Вход</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
