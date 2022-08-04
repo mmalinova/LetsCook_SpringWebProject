@@ -1,7 +1,6 @@
 #contact-body {
-    background-image: url(../images/contact.jpg);
     background-size: cover;
-    background-image: no-repeat;
+    background-repeat: no-repeat;
 }
 .contact-form input {
     width: 100%;

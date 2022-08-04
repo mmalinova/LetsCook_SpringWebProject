@@ -5,16 +5,16 @@
 #nav {
     background-color: rgb(255, 211, 158);
     overflow: hidden;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
-.profile {
+/*.profile {
     display: none;
-}
+}*/
 #nav li {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 #nav li {

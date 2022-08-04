@@ -1,7 +1,7 @@
 INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`, `image_url`, `active`)
-VALUES ('1', 'malinova29@gmail.com', 'Mihaela', 'Malinova', 'QpdgfqHGoAPyA5GRVQfdgw==', null, 1),
-       ('2', 'georgi@gmail.com', 'Georgi', 'Georgiev', 'QpdgfqHGoAPyA5GRVQfdgw==', null, 0),
-       ('3', 'petko@gmail.com', 'Petko', 'Petkov', 'QpdgfqHGoAPyA5GRVQfdgw==', null, 0);
+VALUES ('1', 'malinova29@gmail.com', 'Mihaela', 'Malinova', '3006aa2b1ef3c11a2de1ede20a6b3a17318186e24700bcc3028e746c7ced12e8992541d2a9639765', null, 1),
+       ('2', 'georgi@gmail.com', 'Georgi', 'Georgiev', '096253277e94af27413316ab81d3ad32fb00a4250db3883c5e9cc540718f6ff11446aac0eae0e0db', null, 0),
+       ('3', 'petko@gmail.com', 'Petko', 'Petkov', 'f1df40fe2eb2422ae329b068993f8458d78c9311e138930b7a4d9640fa6dd0e6ea1dab0681396b00', null, 0);
 
 INSERT INTO `role` (`id`, `role`)
 VALUES ('1', 'ADMIN'),

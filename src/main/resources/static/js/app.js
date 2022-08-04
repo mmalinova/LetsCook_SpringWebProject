@@ -8,7 +8,7 @@ var cat = Array.from(document.getElementsByClassName('cat'));
 var recipeDash = document.getElementById('recipe-dash');
 
 window.addEventListener('load', (event) => {
-    setUserNav();
+    //setUserNav();
     if (slides.length > 0) {
         autoShowSlides();
     }
@@ -63,7 +63,7 @@ window.addEventListener('load', (event) => {
     document.getElementById('logoutBtn').addEventListener('click', async () => {
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('username');
-        setUserNav();
+        //setUserNav();
         document.location.href = './index.html';
     });
 
@@ -509,7 +509,7 @@ function autoShowSlides() {
 
 function renderMiddleware(ctx, next) {
     ctx.render = (content) => render(content, document.getElementById('site-content'));
-    ctx.setUserNav = setUserNav;
+    //ctx.setUserNav = setUserNav;
     next();
 }
 

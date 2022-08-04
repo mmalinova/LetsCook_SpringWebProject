@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th=http://www.thymeleaf.org>
 
 <head>
     <meta charset="UTF-8">
@@ -10,10 +11,11 @@
         content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-    <title>Да сготвим - сготви бързо, лесно, вкусно</title>
     <script src="/js/app.js" type="module"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Да сготвим - сготви бързо, лесно, вкусно</title>
 </head>
 
 <body>
@@ -21,10 +23,10 @@
         <!-- Navigation -->
         <header>
             <ul id="nav">
-                <li><a id="icon" class="active" href="index.html">
+                <li><a id="icon" class="active" th:href="@{/}">
                         <img id="logo" src="/images/logo.png" alt="logo">
                     </a></li>
-                <li><a href="javascript:void(0)">Закуска &#x2771;
+                <li><a th:href="@{/recipes_dashboard}">Закуска &#x2771;
                         <ul>
                             <li>
                                 <a href="javascript:void(0)" class="search-by-subcat" name="закуска">Закуски</a>
@@ -37,7 +39,7 @@
                             </li>
                         </ul>
                     </a></li>
-                <li><a href="javascript:void(0)">Обяд &#x2771;
+                <li><a th:href="@{/recipes_dashboard}">Обяд &#x2771;
                         <ul>
                             <li>
                                 <a href="javascript:void(0)" class="search-by-subcat" name="крем супа">Крем супи</a>
@@ -47,7 +49,7 @@
                             </li>
                         </ul>
                     </a></li>
-                <li><a href="javascript:void(0)">Вечеря &#x2771;
+                <li><a th:href="@{/recipes_dashboard}">Вечеря &#x2771;
                         <ul>
                             <li>
                                 <a href="javascript:void(0)" class="search-by-subcat" name="0">Ястия с месо</a>
@@ -57,7 +59,7 @@
                             </li>
                         </ul>
                     </a></li>
-                <li><a href="javascript:void(0)">Десерт &#x2771;
+                <li><a th:href="@{/recipes_dashboard}">Десерт &#x2771;
                         <ul>
                             <li>
                                 <a href="javascript:void(0)" class="search-by-subcat" name="крем">Кремове</a>
@@ -75,23 +77,26 @@
                     </a></li>
                 <!-- Guest users -->
                 <li style="width: 100px; float: right; margin-right: 10px;" class="guest">
-                    <a href="register.html">Регистрация</a>
+                    <a th:href="@{/user/register}">Регистрация</a>
                 </li>
                 <li style="width: 100px; float: right" class="guest">
-                    <a href="login.html">Вход</a>
+                    <a th:href="@{/user/login}">Вход</a>
                 </li>
                 <!-- Logged users -->
                 <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a id="logoutBtn" href="javascript:void(0)">Излизане</a>
+                    <a id="logoutBtn" th:href="@{/user/logout}">Излизане</a>
                 </li>
                 <li style="width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a href="#">Любими рецепти</a>
+                    <a th:href="@{/recipes_dashboard}">Любими рецепти</a>
                 </li>
                 <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile">
-                    <a href="#">Моите рецепти</a>
+                    <a th:href="@{/recipes_dashboard}">Моите рецепти</a>
                 </li>
                 <li style="width: 90px; float: right; margin-right: 50px;" class="profile">
-                    <p style="display: inline;" id="welcome"></p>
+                    <p style="display: inline;" id="welcome">Добре дошъл,
+                    <span th:if="${@currentUser.isLoggedIn()}" th:text="${@currentUser.getName()}"></span>
+                        <span th:if="${@currentUser.isAnonymous()}">Анонимен</span>
+                    </p>
                 </li>
             </ul>
 
@@ -151,25 +156,25 @@
 
             <p>Категории</p>
             <section class="categories">
-                <a href="javascript:void(0)" class="cat"> <img src="/images/1.png" alt="Основни ястия" id="Основни ястия"
+                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/1.png" alt="Основни ястия" id="Основни ястия"
                         name="основно" />
                     <span class="catHover"></span><span class="iconHold" id="Основни ястия" name="основно"><img
                             src="/images/small_1.png" alt="Основни ястия" id="Основни ястия" name="основно">Основни
                         ястия</span> </a>
-                <a href="javascript:void(0)" class="cat"> <img src="images/2.png" alt="Супи" id="Супи" name="супа" />
+                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="images/2.png" alt="Супи" id="Супи" name="супа" />
                     <span class="catHover"></span><span class="iconHold" id="Супи" name="супа"><img
                             src="/images/small_2.png" alt="Супи" id="Супи" name="супа">Супи</span>
                 </a>
-                <a href="javascript:void(0)" class="cat"> <img src="/images/3.png" alt="Салати" id="Салати"
+                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/3.png" alt="Салати" id="Салати"
                         name="салата" /> <span class="catHover"></span><span class="iconHold" id="Салати"
                         name="салата"><img src="/images/small_3.png" alt="Салати" id="Салати" name="салата">Салати</span>
                 </a>
-                <a href="javascript:void(0)" class="cat"> <img src="/images/4.png" alt="Предястия" id="Предястия"
+                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/4.png" alt="Предястия" id="Предястия"
                         name="предястие" />
                     <span class="catHover"></span><span class="iconHold" id="Предястия" name="предястие"><img
                             src="/images/small_4.png" alt="Предястия" id="Предястия" name="предястие">Предястия</span>
                 </a>
-                <a href="javascript:void(0)" class="cat"> <img src="/images/5.png" alt="Десерти" id="Десерти"
+                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/5.png" alt="Десерти" id="Десерти"
                         name="десерт" /> <span class="catHover"></span><span class="iconHold" id="Десерти"
                         name="десерт"><img src="/images/small_5.png" alt="Десерти" id="Десерти"
                             name="десерт">Десерти</span>
@@ -207,29 +212,29 @@
         <footer>
             <hr style="width:100%;text-align:left;margin-left:0;">
             <div class="footer">
-                <a href="index.html">Начало</a>
-                <a href="info.html">Информация</a>
-                <a href="terms_of_use.html">Условия за ползване</a>
-                <a href="data_policy.html">Политика за поверителност на данните</a>
-                <a href="contacts.html">Контакти/За реклама</a>
+                <a th:href="@{/}">Начало</a>
+                <a th:href="@{/info}">Информация</a>
+                <a th:href="@{/terms_of_use}">Условия за ползване</a>
+                <a th:href="@{/data_policy}">Политика за поверителност на данните</a>
+                <a th:href="@{/contacts}">Контакти/За реклама</a>
             </div>
             <br>
             <ul id="social-media">
                 <li>
-                    <p>2021 &copy; dasgotvim.com</p>
+                    <p>2022 &copy; dasgotvim.com</p>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/mihaela.malinova.98/">
+                    <a th:href="@{https://www.facebook.com/mihaela.malinova.98/}">
                         <img src="/images/facebook.svg" alt="facebook icon">
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/mihaellamalinova/">
+                    <a th:href="@{https://www.instagram.com/mihaellamalinova/}">
                         <img src="/images/instagram.svg" alt="instagram icon">
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/mihaela-malinova-72352319a/">
+                    <a th:href="@{https://www.linkedin.com/in/mihaela-malinova-72352319a/}">
                         <img src="/images/linkedin.svg" alt="linkedIn icon">
                     </a>
                 </li>

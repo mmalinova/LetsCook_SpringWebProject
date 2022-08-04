@@ -18,7 +18,7 @@
     font-family: 'Raleway', sans-serif;
 }
 .recipe-info p {
-    color: var(--grey-600);
+    color: var(grey-600);
 }
 .recipe-icons {
     display: grid;
