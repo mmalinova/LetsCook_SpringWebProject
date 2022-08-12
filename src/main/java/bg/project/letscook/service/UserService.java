@@ -3,6 +3,7 @@ package bg.project.letscook.service;
 import bg.project.letscook.model.dto.UserLoginDTO;
 import bg.project.letscook.model.dto.UserRegisterDTO;
 import bg.project.letscook.model.entity.UserEntity;
+import bg.project.letscook.model.mapper.UserMapper;
 import bg.project.letscook.repository.UserRepository;
 import bg.project.letscook.user.CurrentUser;
 import org.slf4j.Logger;
@@ -18,11 +19,13 @@ public class UserService {
     private final UserRepository userRepository;
     private final CurrentUser currentUser;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, CurrentUser currentUser, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, CurrentUser currentUser, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.currentUser = currentUser;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     public boolean login(UserLoginDTO userLoginDTO) {
@@ -50,15 +53,10 @@ public class UserService {
     }
 
     public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
-        UserEntity userToRegister = new UserEntity();
-        userToRegister.setEmail(userRegisterDTO.getEmail());
-        userToRegister.setActive(true);
-        userToRegister.setFirstName(userRegisterDTO.getFirstName());
-        userToRegister.setLastName(userRegisterDTO.getLastName());
+        UserEntity userToRegister = userMapper.userDtoToUserEntity(userRegisterDTO);
         userToRegister.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
 
         userToRegister = userRepository.save(userToRegister);
-
         //login
         currentUser.login(userToRegister.getFirstName());
     }

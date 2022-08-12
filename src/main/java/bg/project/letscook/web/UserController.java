@@ -4,9 +4,14 @@ import bg.project.letscook.model.dto.UserLoginDTO;
 import bg.project.letscook.model.dto.UserRegisterDTO;
 import bg.project.letscook.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("user")
@@ -29,9 +34,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(UserLoginDTO userLoginDTO) {
+    public String login(@Valid UserLoginDTO userLoginDTO,
+                        BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/user/login";
+        }
         userService.login(userLoginDTO);
         return "redirect:/";
+    }
+
+    @ModelAttribute("userModel")
+    public UserRegisterDTO initUserModel() {
+        return new UserRegisterDTO();
     }
 
     @GetMapping("/register")
@@ -40,7 +54,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(UserRegisterDTO userRegisterDTO) {
+    public String register(@Valid UserRegisterDTO userRegisterDTO,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userModel", userRegisterDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
+
+            return "redirect:/user/register";
+        }
         userService.registerAndLogin(userRegisterDTO);
         return "redirect:/";
     }

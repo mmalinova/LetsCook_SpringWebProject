@@ -1,5 +1,6 @@
 #contact-body {
     background-size: cover;
+    background-image: url("../images/contact.jpg");
     background-repeat: no-repeat;
 }
 .contact-form input {
@@ -33,7 +34,7 @@
 }
 
 #contact_submit:hover {
-    background: rgb(252, 239, 124);
+    background: #91c3dc;
     color: white;
 }
 
@@ -46,7 +47,7 @@
     text-align: center;
     margin: 0 auto;
     padding: 10px 0;
-    color: rgb(255, 221, 158);
+    color: #91c3dc;
 }
 
 .contact-wrapper {
@@ -76,8 +77,8 @@
 
 .contact-text {
     font: 300 18px 'Lato', sans-serif;
-    letter-spacing: 1.9px;
-    color: rgb(255, 221, 158);
+    letter-spacing: 2px;
+    color: rgb(8 12 23);
 }
 
 .place {
@@ -96,7 +97,7 @@
 }
 
 .contact-text a {
-    color: rgb(255, 221, 158);
+    color: #070c12;
     text-decoration: none;
     transition-duration: 0.2s;
 }

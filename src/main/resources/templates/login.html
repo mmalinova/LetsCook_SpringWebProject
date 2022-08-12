@@ -10,6 +10,7 @@
     <meta property="description"
         content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -27,13 +28,29 @@
             <form id="login-form"
                   th:action="@{/user/login}"
                   th:method="POST">
-                <h1>Вход</h1>
+                <h2>Вход</h2>
                 <p>Моля, въведи своите данни.</p>
                 <hr>
-                <p>E-mail</p>
-                <input placeholder="Въведи e-mail" name="email" type="text">
+                <p>Email</p>
+                <input
+                        style="margin-top: -12px"
+                        placeholder="Въведи Email"
+                        name="email"
+                        type="text"
+                        class="form-control"
+                >
                 <p>Парола</p>
-                <input type="password" placeholder="Въведи парола" name="password">
+                <input
+                        style="margin-top: -12px"
+                        type="password"
+                        placeholder="Въведи парола"
+                        name="password"
+                        min="3"
+                        class="form-control"
+                >
+                <p th:if="${bad_credentials}" style="margin-top: -15px" class="errors alert alert-danger">
+                    Невалиден Email и/или парола.
+                </p>
                 <input type="submit" class="registerbtn" value="Влизане">
             </form>
             <div class="signin">

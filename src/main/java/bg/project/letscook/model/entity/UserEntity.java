@@ -1,7 +1,11 @@
 package bg.project.letscook.model.entity;
 
+import bg.project.letscook.model.validation.UniqueEmail;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +17,8 @@ public class UserEntity extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
     @Column(nullable = false, unique = true)
-    @Email
+    @NotBlank(message = "Моля, въведи Email")
+    @Email(message = "Невалиден Email")
     private String email;
     private String password;
     @Column(name = "image_url")

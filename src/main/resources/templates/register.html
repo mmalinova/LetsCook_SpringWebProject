@@ -10,6 +10,7 @@
     <meta property="description"
         content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -26,25 +27,74 @@
             </a>
             <form id="register-form"
                   th:action="@{/user/register}"
-                  th:method="POST">
-                <h1>Регистрация</h1>
+                  th:method="POST"
+                  th:object="${userModel}"
+            >
+                <h2>Регистрация</h2>
                 <p>Моля, попълни формата по-долу, за да се регистрираш.</p>
                 <hr>
                 <p>Име</p>
-                <input type="text" placeholder="Въведи име" name="firstName">
-
+                <input
+                        style="margin-top: -12px"
+                        type="text"
+                        placeholder="Въведи име"
+                        th:field="*{firstName}"
+                        th:errorclass="is-invalid"
+                        class="form-control"
+                >
+                <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                    Името е задължително и трябва да бъде между 2 и 20 символа.
+                </p>
                 <p>Фамилия</p>
-                <input type="text" placeholder="Въведи фамилия" name="lastName">
-
-                <p>E-mail</p>
-                <input placeholder="Въведи своя имейл" name="email" type="text">
-
+                <input
+                        style="margin-top: -12px"
+                        type="text"
+                        placeholder="Въведи фамилия"
+                        th:field="*{lastName}"
+                        th:errorclass="is-invalid"
+                        class="form-control"
+                >
+                <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                    Фамилията е задължителна и трябва да бъде между 2 и 20 символа.
+                </p>
+                <p>Email</p>
+                <input
+                        style="margin-top: -12px"
+                        type="text"
+                        placeholder="Въведи своя имейл"
+                        th:field="*{email}"
+                        th:errorclass="is-invalid"
+                        class="form-control"
+                >
+                <div style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('email')}"
+                         th:text="${err}">
+                    </div>
+                </div>
                 <p>Парола</p>
-                <input type="password" placeholder="Въведи парола" name="password">
-
+                <input
+                        style="margin-top: -12px"
+                        type="password"
+                        placeholder="Въведи парола"
+                        th:field="*{password}"
+                        th:errorclass="is-invalid"
+                        class="form-control"
+                >
+                <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                    Паролата е задължителна и трябва да бъде минимум 3 символа.
+                </p>
                 <p>Повтори паролата</p>
-                <input type="password" placeholder="Повтори въведената парола" name="repeatPass">
-
+                <input
+                        style="margin-top: -12px"
+                        type="password"
+                        placeholder="Повтори въведената парола"
+                        th:field="*{repeatPass}"
+                        th:errorclass="is-invalid"
+                        class="form-control"
+                >
+                <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                    Паролите трябва да съвпадат.
+                </p>
                 <input type="submit" class="registerbtn" value="Регистриране">
             </form>
             <div class="signin">
