@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th=http://www.thymeleaf.org>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
+    <meta property="description"
+          content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <script src="/js/app.js" type="module"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!-- Footer -->
+<footer>
+    <hr style="width:100%;text-align:left;margin-left:0;">
+    <div class="footer">
+        <a th:href="@{/}">Начало</a>
+        <a th:href="@{/info}">Информация</a>
+        <a th:href="@{/terms_of_use}">Условия за ползване</a>
+        <a th:href="@{/data_policy}">Политика за поверителност на данните</a>
+        <a th:href="@{/contacts}">Контакти/За реклама</a>
+    </div>
+    <br>
+    <ul id="social-media">
+        <li>
+            <p>2022 &copy; dasgotvim.com</p>
+        </li>
+        <li>
+            <a th:href="@{https://www.facebook.com/mihaela.malinova.98/}">
+                <img src="/images/facebook.svg" alt="facebook icon">
+            </a>
+        </li>
+        <li>
+            <a th:href="@{https://www.instagram.com/mihaellamalinova/}">
+                <img src="/images/instagram.svg" alt="instagram icon">
+            </a>
+        </li>
+        <li>
+            <a th:href="@{https://www.linkedin.com/in/mihaela-malinova-72352319a/}">
+                <img src="/images/linkedin.svg" alt="linkedIn icon">
+            </a>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+#add-body {
+    background-size: cover;
+    background-image: url("../images/add_image.jpg");
+    background-repeat: no-repeat;
+}
+#add-body h4 {
+    color: white;
+}
+#add-body .container {
+    background-color: rgb(255 211 158);
+}
+#add-body .registerbtn {
+    background-color: rgb(24 158 88);
+    border-radius: 30px;
+}
+.wrapper input, .wrapper p {
+    width: 46%;
+    float: left;
+    margin-right: 15px;
+}

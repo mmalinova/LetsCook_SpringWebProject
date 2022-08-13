@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th=http://www.thymeleaf.org>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
+    <meta property="description"
+          content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Да сготвим - Добавяне на рецепта</title>
+</head>
+
+<body id="add-body">
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<h4 style="text-align: center">Добавяне на рецепта <img id="add_icon" src="/images/add_icon.png" alt="icon"></h4>
+
+<!-- Add Recipe Page -->
+    <div style="margin-top: 15px" class="container">
+        <section id="add">
+            <form id="add-form"
+                  th:action="@{/recipe/recipe_add}"
+                  th:method="POST"
+                  th:object="${recipeModel}"
+            >
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label>Име на рецептата:</label>
+                        <input
+                                id="name"
+                                th:field="*{name}"
+                                th:errorclass="is-invalid"
+                                type="text"
+                                class="form-control"
+                                placeholder="Име на рецептата"
+                        />
+                        <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                            Името на рецептата е задължително.
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="category">За коя категория е най-подходящо ястието ти?</label>
+                        <select
+                                id="category"
+                                name="category"
+                                th:errorclass="is-invalid"
+                                class="form-control">
+                            <option value="">- Избери категория -</option>
+                            <option th:each="c : ${T(bg.project.letscook.model.enums.CategoryEnum).values()}"
+                                    th:text="${c}"
+                                    th:value="${c}"
+                                    th:selected="${c} == *{category}">
+                                Категория
+                            </option>
+                        </select>
+                        <p style="margin-top: -2px" class="invalid-feedback errors alert alert-danger">
+                            Категорията на рецептата е задължителна.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="subcategory">А за коя подкатегория е най-подходящо ястието ти?</label>
+                        <select
+                                id="subcategory"
+                                name="subcategory"
+                                th:errorclass="is-invalid"
+                                class="form-control">
+                            <option value="">- Избери подкатегория -</option>
+                            <option th:each="s : ${T(bg.project.letscook.model.enums.SubcategoryEnum).values()}"
+                                    th:text="${s}"
+                                    th:value="${s}"
+                                    th:selected="${s} == *{subcategory}">
+                                Подкатегория
+                            </option>
+                        </select>
+                        <p style="margin-top: -2px" class="invalid-feedback errors alert alert-danger">
+                            Подкатегорията на рецептата е задължителна.
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label>Вегетарианска ли е рецептата?</label>
+                        <div>
+                            <input type="radio" id="no" name="vegetarian" value="Не">
+                            <label for="no">Не</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="yes" name="vegetarian" value="Да">
+                            <label for="yes">Да</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="imageURL">Избери до 3 снимки:</label>
+                        <input
+                                id="imageURL"
+                                th:field="*{imageURL}"
+                                th:errorclass="is-invalid"
+                                type="url"
+                                class="form-control"
+                                placeholder="Качи снимката тук"
+                        />
+                        <p style="margin-top: -2px" class="invalid-feedback errors alert alert-danger">
+                            Моля, качи снимка на рецептата.
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="portions">Порции:</label>
+                        <input
+                                id="portions"
+                                th:field="*{portions}"
+                                th:errorclass="is-invalid"
+                                type="number"
+                                step="1"
+                                class="form-control"
+                                placeholder="Порции"
+                        />
+                        <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                            Моля, въведи брой порции.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Необходими продукти:</label>
+                    <input
+                            id="productName"
+                            th:field="*{productName}"
+                            th:errorclass="is-invalid"
+                            type="text"
+                            class="form-control"
+                            placeholder="Продукт"
+                    />
+                    <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                        Моля, въведи продукт.
+                    </p>
+                    <input
+                            id="quantity"
+                            th:field="*{quantity}"
+                            th:errorclass="is-invalid"
+                            type="text"
+                            class="form-control"
+                            placeholder="Количество"
+                    />
+                    <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                        Моля, въведи количество.
+                    </p>
+                    <input
+                            id="measureUnit"
+                            th:field="*{measureUnit}"
+                            th:errorclass="is-invalid"
+                            type="text"
+                            class="form-control"
+                            placeholder="Мерна единица"
+                    />
+                    <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                        Моля, въведи мерна единица.
+                    </p>
+                    <input style="margin-top: -5px" type="submit" class="registerbtn" value="Добавяне"/>
+                </div>
+                <div class="form-group">
+                    <label for="steps">Начин на приготвяне:</label>
+                    <textarea
+                            id="steps"
+                            th:field="*{steps}"
+                            th:errorclass="is-invalid"
+                            type="textarea"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Въведи стъпките"
+                    >
+                    </textarea>
+                    <p style="margin-top: -2px" class="invalid-feedback errors alert alert-danger">
+                        Стъпките за приготвяне са задължителни.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Време за приготвяне:</label>
+                    <div class="wrapper">
+                        <input
+                                id="hours"
+                                th:field="*{hours}"
+                                th:errorclass="is-invalid"
+                                type="text"
+                                class="form-control"
+                                placeholder="Брой часове"
+                        />
+                        <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                            Часовете са задължителни.
+                        </p>
+                        <input
+                                id="minutes"
+                                th:field="*{minutes}"
+                                th:errorclass="is-invalid"
+                                type="text"
+                                class="form-control"
+                                placeholder="Брой минути"
+                        />
+                        <p style="margin-top: -15px" class="invalid-feedback errors alert alert-danger">
+                            Минутите са задължителни.
+                        </p>
+                    </div>
+                </div>
+
+                <input type="submit" class="registerbtn" value="Добавяне"/>
+
+            </form>
+        </section>
+    </div>
+
+<div th:replace="fragments/footer">Navbar</div>
+
+</body>
+
+</html>

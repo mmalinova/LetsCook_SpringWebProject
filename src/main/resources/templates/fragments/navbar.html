@@ -84,10 +84,13 @@
             <a id="logoutBtn" th:href="@{/user/logout}">Излизане</a>
         </li>
         <li style="width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a th:href="@{/recipes_dashboard}">Любими рецепти</a>
+            <a th:href="@{/recipe/recipes_dashboard}">Любими рецепти</a>
         </li>
         <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a th:href="@{/recipes_dashboard}">Моите рецепти</a>
+            <a th:href="@{/recipe/recipes_dashboard}">Моите рецепти</a>
+        </li>
+        <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
+            <a th:href="@{/recipe/recipe_add}">Добави рецепта</a>
         </li>
         <li style="width: 90px; float: right; margin-right: 50px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
             <p style="display: inline;" id="welcome">Добре дошъл,

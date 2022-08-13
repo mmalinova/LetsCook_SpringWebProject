@@ -21,42 +21,44 @@
 <body>
     <!-- Login Page -->
     <section id="login">
-        <div class="container">
-            <a id="icon" th:href="@{/}">
-                <img id="login_logo" src="/images/lets_cook.png" alt="logo">
-            </a>
-            <form id="login-form"
-                  th:action="@{/user/login}"
-                  th:method="POST">
-                <h2>Вход</h2>
-                <p>Моля, въведи своите данни.</p>
-                <hr>
-                <p>Email</p>
-                <input
-                        style="margin-top: -12px"
-                        placeholder="Въведи Email"
-                        name="email"
-                        type="text"
-                        class="form-control"
-                >
-                <p>Парола</p>
-                <input
-                        style="margin-top: -12px"
-                        type="password"
-                        placeholder="Въведи парола"
-                        name="password"
-                        min="3"
-                        class="form-control"
-                >
-                <p th:if="${bad_credentials}" style="margin-top: -15px" class="errors alert alert-danger">
-                    Невалиден Email и/или парола.
-                </p>
-                <input type="submit" class="registerbtn" value="Влизане">
-            </form>
-            <div class="signin">
-                <p>Все още нямаш акаунт?
-                    <a th:href="@{/user/register}">Регистрация</a>.
-                </p>
+        <div class="row container">
+            <div class="form-group col-md-12 mb-3">
+                <a id="icon" th:href="@{/}">
+                    <img id="login_logo" src="/images/lets_cook.png" alt="logo">
+                </a>
+                <form id="login-form"
+                    th:action="@{/user/login}"
+                    th:method="POST">
+                    <h2>Вход</h2>
+                    <p>Моля, въведи своите данни.</p>
+                    <hr>
+                    <p>Email</p>
+                    <input
+                            style="margin-top: -12px"
+                            placeholder="Въведи Email"
+                            name="email"
+                            type="text"
+                            class="form-control"
+                    >
+                    <p>Парола</p>
+                    <input
+                            style="margin-top: -12px"
+                            type="password"
+                            placeholder="Въведи парола"
+                            name="password"
+                            min="3"
+                            class="form-control"
+                    >
+                    <p th:if="${bad_credentials}" style="margin-top: -15px" class="errors alert alert-danger">
+                        Невалиден Email и/или парола.
+                    </p>
+                    <input type="submit" class="registerbtn" value="Влизане">
+                </form>
+                <div class="signin">
+                    <p>Все още нямаш акаунт?
+                        <a th:href="@{/user/register}">Регистрация</a>.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
