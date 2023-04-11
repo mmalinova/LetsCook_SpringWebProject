@@ -1,8 +1,8 @@
 package bg.project.letscook.web;
 
-import bg.project.letscook.model.dto.UserLoginDTO;
 import bg.project.letscook.model.dto.UserRegisterDTO;
 import bg.project.letscook.service.UserService;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,22 +27,6 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        userService.logout();
-        return "redirect:/";
-    }
-
-    @PostMapping("/login")
-    public String login(@Valid UserLoginDTO userLoginDTO,
-                        BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "redirect:/user/login";
-        }
-        userService.login(userLoginDTO);
-        return "redirect:/";
-    }
-
     @ModelAttribute("userModel")
     public UserRegisterDTO initUserModel() {
         return new UserRegisterDTO();
@@ -65,5 +49,16 @@ public class UserController {
         }
         userService.registerAndLogin(userRegisterDTO);
         return "redirect:/";
+    }
+
+    @PostMapping("/login-error")
+    public String onFailedLogin(
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+            RedirectAttributes redirectAttributes
+    ) {
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+
+        return "redirect:/user/login";
     }
 }

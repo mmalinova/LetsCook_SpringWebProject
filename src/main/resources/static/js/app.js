@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
     if (slides.length > 0) {
         autoShowSlides();
     }
-    loadRecipes();
+    // loadRecipes();
 
     // Next/previous controls
     if (slides.length > 0) {
@@ -30,7 +30,6 @@ window.addEventListener('load', (event) => {
             dotsArray[1].addEventListener('click', (event) => showSlides(slideIndex = 2));
             dotsArray[2].addEventListener('click', (event) => showSlides(slideIndex = 3));
             dotsArray[3].addEventListener('click', (event) => showSlides(slideIndex = 4));
-            dotsArray[4].addEventListener('click', (event) => showSlides(slideIndex = 5));
         }
     }
 
@@ -60,12 +59,12 @@ window.addEventListener('load', (event) => {
         document.getElementById('ingredients').innerHTML += ingCon;
     }
 
-    document.getElementById('logoutBtn').addEventListener('click', async () => {
-        sessionStorage.removeItem('email');
-        sessionStorage.removeItem('username');
-        //setUserNav();
-        document.location.href = './index.html';
-    });
+    // document.getElementById('logoutBtn').addEventListener('click', async () => {
+    //     sessionStorage.removeItem('email');
+    //     sessionStorage.removeItem('username');
+    //     //setUserNav();
+    //     document.location.href = './index.html';
+    // });
 
     let element = document.getElementById('Подходящи рецепти');
     if (element) {
@@ -378,7 +377,7 @@ function displaySingleRecipe(id) {
                 // Examine the text in the response
                 return response.text();
             }).then(function (text) {
-                document.location.href = "./recipe.html";
+                document.location.href = "./recipe_details.html";
                 var jsonData = JSON.parse(text);
                 var ingCon = '';
                 for (var i = 0; i < jsonData.length; i++) {

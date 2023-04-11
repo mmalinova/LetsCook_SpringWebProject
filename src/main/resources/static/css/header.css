@@ -9,9 +9,6 @@
     padding: 0;
     list-style: none;
 }
-/*.profile {
-    display: none;
-}*/
 #nav li {
     margin: 0;
     padding: 0;
@@ -42,4 +39,24 @@
 }
 #nav li a.active {
     background-color: transparent;
+}
+.logoutBtn {
+    background-color: rgb(255, 211, 158);
+    color: black;
+    font-family: 'Lobster', cursive;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+#welcome {
+    margin: 0 auto;
+    display:block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+#welcome:hover {
+    background-color: rgb(255, 218, 176);
+    text-decoration: underline;
 }

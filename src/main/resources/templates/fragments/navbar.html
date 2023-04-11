@@ -1,102 +1,130 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en"
-      xmlns:th=http://www.thymeleaf.org>
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th=http://www.thymeleaf.org>
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
-    <meta property="description"
-          content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
-    <link rel="icon" type="image/x-icon" href="/images/icon.png">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
+    <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
+          property="description">
+    <link href="/images/icon.png" rel="icon" type="image/x-icon">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
     <script src="/js/app.js" type="module"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <!-- Navigation -->
+<th:block sec:authorize="isAuthenticated()">
+    <a id="welcome" th:href="@{/profile}">
+        <th:block
+                th:text="#{navbar_welcome(${#authentication.principal.fullName})}">
+        </th:block>
+    </a>
+</th:block>
 <header>
     <ul id="nav">
-        <li><a id="icon" class="active" th:href="@{/}">
-            <img id="logo" src="/images/logo.png" alt="logo">
+        <li class="profile" style="width: 80px; float: right; margin-right: 5px;">
+            <form th:method="get">
+                <label class="text-white" for="lang" th:text="#{navbar_language}"></label>
+                <select
+                        id="lang"
+                        name="lang"
+                        onchange="this.form.submit()">
+                    <option th:selected="${#locale.toString()} == 'bg_BG'" value="bg_BG">Български</option>
+                    <option th:selected="${#locale.toString()} == 'en_US'" value="en_US">English</option>
+                </select>
+            </form>
+        </li>
+        <li><a class="active" id="icon" th:href="@{/}">
+            <img alt="logo" id="logo" src="/images/logo.png">
         </a></li>
-        <li><a th:href="@{/recipes_dashboard}">Закуска &#x2771;
+        <li><a th:href="@{/recipes_dashboard}" th:text="#{navbar_breakfast}">Закуска &#x2771;
             <ul>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="закуска">Закуски</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="закуска" th:text="#{navbar_breakfasts}">Закуски</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="баница">Баници</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="баница"
+                       th:text="#{navbar_pie}">Баници</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="паста">Паста</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="паста"
+                       th:text="#{navbar_pasta}">Паста</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes_dashboard}">Обяд &#x2771;
+        <li><a th:href="@{/recipes_dashboard}" th:text="#{navbar_lunch}">Обяд &#x2771;
             <ul>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="крем супа">Крем супи</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="крем супа"
+                       th:text="#{navbar_cream_soup}">Крем супи</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="супа">Супи и чорби</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="супа"
+                       th:text="#{navbar_soups_and_stews}">Супи и чорби</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes_dashboard}">Вечеря &#x2771;
+        <li><a th:href="@{/recipes_dashboard}" th:text="#{navbar_dinner}">Вечеря &#x2771;
             <ul>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="0">Ястия с месо</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="0" th:text="#{navbar_meat_dishes}">Ястия
+                        с месо</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="1">Ястия без месо</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="1"
+                       th:text="#{navbar_meals_without_meat}">Ястия без месо</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes_dashboard}">Десерт &#x2771;
+        <li><a th:href="@{/recipes_dashboard}" th:text="#{navbar_dessert}">Десерт &#x2771;
             <ul>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="крем">Кремове</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="крем"
+                       th:text="#{navbar_creams}">Кремове</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="кекс">Кексове</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="кекс" th:text="#{navbar_muffins}">Кексове</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="сладкиш">Сладкиши</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="сладкиш" th:text="#{navbar_sweets}">Сладкиши</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" class="search-by-subcat" name="торта">Торти</a>
+                    <a class="search-by-subcat" href="javascript:void(0)" name="торта"
+                       th:text="#{navbar_cakes}">Торти</a>
                 </li>
             </ul>
         </a></li>
         <!-- Guest users -->
-        <li style="width: 100px; float: right; margin-right: 10px;" class="guest" th:if="${@currentUser.isAnonymous()}">
-            <a th:href="@{/user/register}">Регистрация</a>
-        </li>
-        <li style="width: 100px; float: right" class="guest" th:if="${@currentUser.isAnonymous()}">
-            <a th:href="@{/user/login}">Вход</a>
-        </li>
+        <th:block sec:authorize="!isAuthenticated()">
+            <li class="guest" style="width: 100px; float: right; margin-right: 10px;">
+                <a th:href="@{/user/register}" th:text="#{navbar_register}">Регистрация</a>
+            </li>
+            <li class="guest" style="width: 100px; float: right">
+                <a th:href="@{/user/login}" th:text="#{navbar_login}">Вход</a>
+            </li>
+        </th:block>
         <!-- Logged users -->
-        <li style="width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a id="logoutBtn" th:href="@{/user/logout}">Излизане</a>
-        </li>
-        <li style="width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a th:href="@{/recipe/recipes_dashboard}">Любими рецепти</a>
-        </li>
-        <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a th:href="@{/recipe/recipes_dashboard}">Моите рецепти</a>
-        </li>
-        <li style="display: inline; width: 80px; float: right; margin-right: 5px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <a th:href="@{/recipe/recipe_add}">Добави рецепта</a>
-        </li>
-        <li style="width: 90px; float: right; margin-right: 50px;" class="profile" th:if="${@currentUser.isLoggedIn()}">
-            <p style="display: inline;" id="welcome">Добре дошъл,
-                <span th:if="${@currentUser.isLoggedIn()}" th:text="${@currentUser.getName()}"></span>
-            </p>
-        </li>
+        <th:block sec:authorize="isAuthenticated()">
+            <li class="profile" style="width: 80px; float: right; margin-right: 5px;">
+                <form id="logoutBtn" th:action="@{/user/logout}" th:method="POST">
+                    <input class="logoutBtn" th:value="#{navbar_logout}" type="submit">
+                </form>
+            </li>
+            <li class="profile" style="width: 80px; float: right; margin-right: 5px;">
+                <a th:href="@{/recipe/recipes_dashboard}" th:text="#{navbar_favorite_recipes}">Любими рецепти</a>
+            </li>
+            <li class="profile" style="display: inline; width: 80px; float: right; margin-right: 5px;">
+                <a th:href="@{/recipe/recipes_dashboard}" th:text="#{navbar_my_recipes}">Моите рецепти</a>
+            </li>
+            <li class="profile" style="display: inline; width: 80px; float: right; margin-right: 5px;">
+                <a th:href="@{/recipe/recipe_add}" th:text="#{navbar_add_recipe}">Добави рецепта</a>
+            </li>
+        </th:block>
     </ul>
 </header>
 </body>

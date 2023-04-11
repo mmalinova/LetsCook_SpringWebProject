@@ -3,6 +3,8 @@ package bg.project.letscook.web;
 import bg.project.letscook.model.dto.AddRecipeDTO;
 import bg.project.letscook.repository.RecipeRepository;
 import bg.project.letscook.service.RecipeService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("recipe")
 public class RecipeController {
-    private final RecipeService recipeService;
-    private final RecipeRepository recipeRepository;
+
+    private RecipeService recipeService;
+    private RecipeRepository recipeRepository;
 
     public RecipeController(RecipeService recipeService, RecipeRepository recipeRepository) {
         this.recipeService = recipeService;
@@ -36,15 +39,16 @@ public class RecipeController {
 
     @PostMapping("/recipe_add")
     public String addRecipe(@Valid AddRecipeDTO addRecipeDTO,
-                           BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
+                            BindingResult bindingResult,
+                            RedirectAttributes redirectAttributes,
+                            @AuthenticationPrincipal UserDetails userDetails) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("recipeModel", addRecipeDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recipeModel", bindingResult);
 
             return "redirect:/recipe/recipe_add";
         }
-        //recipeRepository.save(addRecipeDTO);
+        recipeService.addRecipe(addRecipeDTO, userDetails);
         return "redirect:/";
     }
 }
