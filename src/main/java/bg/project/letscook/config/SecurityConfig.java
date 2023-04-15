@@ -41,6 +41,7 @@ public class SecurityConfig {
                         "/contacts",
                         "/user/profile",
                         "/recipes/recipe_details",
+                        "/recipes/recipe_search",
                         "/recipes/recipes_dashboard/**",
                         "/maintenance"
                         ).permitAll().

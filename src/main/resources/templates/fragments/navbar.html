@@ -19,7 +19,7 @@
 <body>
 <!-- Navigation -->
 <th:block sec:authorize="isAuthenticated()">
-    <a id="welcome" class="text-white" th:href="@{user/profile}">
+    <a id="welcome" class="text-white" th:href="@{/user/profile}">
         <th:block
                 th:text="#{navbar_welcome(${#authentication.principal.fullName})}">
         </th:block>
@@ -100,6 +100,7 @@
             </ul>
         </a></li>
         <li><a th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_all}">Всички рецепти</a></li>
+        <li><a th:href="@{/recipes/recipe_search}" th:text="#{navbar_search}">Търси</a></li>
         <!-- Guest users -->
         <th:block sec:authorize="!isAuthenticated()">
             <li class="guest" style="width: 100px; float: right; margin-right: 10px;">

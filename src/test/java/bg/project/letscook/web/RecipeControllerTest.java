@@ -14,8 +14,7 @@ import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -51,50 +50,13 @@ public class RecipeControllerTest {
     }
 
     @Test
-    void testDeleteByAnonymousUser_Forbidden() throws Exception {
-        mockMvc.perform(delete("/{id}", testRecipe.getId()).
-                        with(csrf())
-                ).
-                andExpect(status().is3xxRedirection());
-        //TODO: check redirection url to login w/o schema
+    void testRecipesDashboardPageShown() throws Exception {
+        mockMvc.perform(get("/recipes/recipes_dashboard")).andExpect(status().isOk()).andExpect(view().name("recipes_dashboard"));
     }
 
     @Test
-    @WithMockUser(
-            username = "admin@example.com",
-            roles = {"ADMIN", "USER"}
-    )
-    void testDeleteByAdmin() throws Exception {
-        mockMvc.perform(delete("/{id}", testRecipe.getId()).
-                        with(csrf())
-                ).
-                andExpect(status().is3xxRedirection()).
-                andExpect(view().name("redirect:/recipes/recipes_dashboard"));
-    }
-
-    @WithMockUser(
-            username = "user@example.com",
-            roles = "USER"
-    )
-    @Test
-    void testDeleteByOwner() throws Exception {
-        mockMvc.perform(delete("/{id}", testRecipe.getId()).
-                        with(csrf())
-                ).
-                andExpect(status().is3xxRedirection()).
-                andExpect(view().name("redirect:/recipes/recipes_dashboard"));
-    }
-
-    @WithMockUser(
-            username = "user@example.com",
-            roles = "USER"
-    )
-    @Test
-    public void testDeleteNotOwned_Forbidden() throws Exception {
-        mockMvc.perform(delete("/{id}", testAdminRecipe.getId()).
-                        with(csrf())
-                ).
-                andExpect(status().isForbidden());
+    void testRecipesAddPageShown() throws Exception {
+        mockMvc.perform(get("/recipes/recipe_add")).andExpect(status().is3xxRedirection());
     }
 
     @WithUserDetails(value = "user@example.com",

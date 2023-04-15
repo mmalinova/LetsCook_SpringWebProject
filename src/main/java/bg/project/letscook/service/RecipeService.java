@@ -1,6 +1,6 @@
 package bg.project.letscook.service;
 
-import bg.project.letscook.model.dto.recipe.CreateOrUpdateRecipeDTO;
+import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
 import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
 import bg.project.letscook.model.entity.CategoryEntity;
@@ -62,10 +62,6 @@ public class RecipeService {
                 anyMatch(r -> r.getRole() == RoleEnum.ADMIN);
     }
 
-    public void deleteRecipeById(Long recipeId) {
-        recipeRepository.deleteById(recipeId);
-    }
-
     public Set<RecipeDetailDTO> getAllRecipes() {
         return recipeRepository.
                 findAll().
@@ -85,12 +81,6 @@ public class RecipeService {
         return recipeRepository.findByName(name).map(recipeMapper::recipeEntityToRecipeDetailDTO);
     }
 
-    public Optional<CreateOrUpdateRecipeDTO> getRecipeEditDetails(Long recipeId) {
-        return recipeRepository.
-                findById(recipeId).
-                map(recipeMapper::recipeEntityToCreateOrUpdateRecipeDTO);
-    }
-
     @Cacheable("recipeById")
     public Optional<RecipeDetailDTO> findRecipeById(Long recipeId) {
         return recipeRepository.
@@ -98,13 +88,13 @@ public class RecipeService {
                 map(recipeMapper::recipeEntityToRecipeDetailDTO);
     }
 
-    public void addRecipe(CreateOrUpdateRecipeDTO addRecipeDTO, UserDetails userDetails) {
+    public void addRecipe(CreateRecipeDTO addRecipeDTO, UserDetails userDetails) {
         long millis=System.currentTimeMillis();
         Date date = new Date(millis);
         ImageEntity image = new ImageEntity();
 
         RecipeEntity newRecipe = recipeMapper.
-                createOrUpdateRecipeDTOToRecipeEntity(addRecipeDTO);
+                createRecipeDTOToRecipeEntity(addRecipeDTO);
 
         UserEntity owner = userRepository.findByEmail(userDetails.getUsername()).
                 orElseThrow();
@@ -133,7 +123,7 @@ public class RecipeService {
         }
     }
 
-    public List<RecipeDetailDTO> searchOffer(SearchRecipeDTO searchRecipeDTO) {
+    public List<RecipeDetailDTO> searchRecipe(SearchRecipeDTO searchRecipeDTO) {
         return this.recipeRepository.findAll(new RecipeSpecification(searchRecipeDTO)).
                 stream().map(recipeMapper::recipeEntityToRecipeDetailDTO).
                 toList();
@@ -141,9 +131,5 @@ public class RecipeService {
 
     @CacheEvict(cacheNames = "recipes", allEntries = true)
     public void refresh() {
-    }
-
-    public void deleteOfferById(Long iId) {
-        recipeRepository.deleteById(iId);
     }
 }

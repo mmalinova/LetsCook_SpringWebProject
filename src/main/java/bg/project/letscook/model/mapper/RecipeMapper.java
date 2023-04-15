@@ -1,6 +1,6 @@
 package bg.project.letscook.model.mapper;
 
-import bg.project.letscook.model.dto.recipe.CreateOrUpdateRecipeDTO;
+import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
 import bg.project.letscook.model.entity.CategoryEntity;
 import bg.project.letscook.model.entity.ImageEntity;
@@ -33,16 +33,8 @@ public interface RecipeMapper {
         return Set.of(categoryEntity);
     }
 
-    @Named("categoryMap")
-    static CategoryEnum categoryMap(Set<CategoryEntity> categoryEntities) {
-        return categoryEntities.stream().map(CategoryEntity::getCategory).findFirst().orElseThrow();
-    }
-
     @Mapping(source = "category", target = "category", qualifiedByName = "catMap")
-    RecipeEntity createOrUpdateRecipeDTOToRecipeEntity(CreateOrUpdateRecipeDTO createOrUpdateRecipeDTO);
-
-    @Mapping(source = "category", target = "category", qualifiedByName = "categoryMap")
-    CreateOrUpdateRecipeDTO recipeEntityToCreateOrUpdateRecipeDTO(RecipeEntity recipeEntity);
+    RecipeEntity createRecipeDTOToRecipeEntity(CreateRecipeDTO createRecipeDTO);
 
     @Mapping(source = "category", target = "categories", qualifiedByName = "categoriesSet")
     @Mapping(source = "images", target = "images", qualifiedByName = "imagesSet")

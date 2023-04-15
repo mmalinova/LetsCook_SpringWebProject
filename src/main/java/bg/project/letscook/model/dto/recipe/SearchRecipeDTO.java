@@ -1,25 +1,19 @@
 package bg.project.letscook.model.dto.recipe;
 
+import bg.project.letscook.model.enums.SubcategoryEnum;
+
 public class SearchRecipeDTO {
 
-    public String productName;
-    public String category;
+    public String name;
     public Integer portions;
+    public SubcategoryEnum subcategory;
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPortions() {
@@ -30,10 +24,18 @@ public class SearchRecipeDTO {
         this.portions = portions;
     }
 
+    public SubcategoryEnum getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(SubcategoryEnum subcategory) {
+        this.subcategory = subcategory;
+    }
+
     public boolean isEmpty() {
-        return (productName == null || productName.isEmpty()) &&
-                (category == null || category.isEmpty()) &&
-                portions == null;
+        return (name == null || name.isEmpty()) &&
+                portions == null &&
+                subcategory == null;
     }
 }
 

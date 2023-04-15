@@ -8,6 +8,11 @@ div.form {
     text-align: center;
 }
 
+div label {
+    display: block;
+    text-align: center;
+}
+
 .form .search-by {
     display: inline-block;
     margin-left: auto;

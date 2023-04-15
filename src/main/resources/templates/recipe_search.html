@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th=http://www.thymeleaf.org>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
+    <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
+          property="description">
+    <link href="/images/icon.png" rel="icon" type="image/x-icon">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Да сготвим - Търсене</title>
+</head>
+
+<body>
+<div id="container">
+
+    <div th:replace="fragments/navbar">Navbar</div>
+
+    <div class="form" style="margin-top: 30px">
+        <form
+                class="search-by"
+                th:action="@{/recipes/recipe_search}"
+                th:method="GET"
+                th:object="${searchRecipe}"
+        >
+            <input
+                    id="name"
+                    placeholder="ТЪРСИ РЕЦЕПТА ПО ИМЕ"
+                    size="50"
+                    th:errorclass="is-invalid"
+                    th:field="*{name}"
+                    type="search"
+                    value=""
+            />
+            <button type="submit">Търси</button>
+        </form>
+    </div>
+
+    <div><label style="text-align:center; margin-top: 20px">Търси рецепта по продукт и/или категория:</label><br></div>
+    <div class="form" style="margin-bottom: 30px">
+        <form
+                class="search-by"
+                th:action="@{/recipes/recipe_search}"
+                th:method="GET"
+                th:object="${searchRecipe}"
+        >
+            <input
+                    id="portions"
+                    placeholder="БРОЙ ПОРЦИИ"
+                    size="40"
+                    th:errorclass="is-invalid"
+                    th:field="*{portions}"
+                    type="search"
+                    value=""
+            />
+            <select class="form-control"
+                    id="subcategory"
+                    name="subcategory"
+                    style="display: inline-block; height: 40px;padding: 0.375rem 0.75rem;line-height: 2;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: 0.25rem;transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                <option value="">- ИЗБЕБИ ПОДКАТЕГОРИЯ-</option>
+                <option th:each="s : ${T(bg.project.letscook.model.enums.SubcategoryEnum).values()}"
+                        th:selected="${s} == *{subcategory}"
+                        th:text="${s}"
+                        th:value="${s}">
+                    Подкатегория
+                </option>
+            </select>
+            <button type="submit">Търси</button>
+        </form>
+    </div>
+
+    <section class="bg-img bg-img-fixed" id="recipes-section">
+        <div class="food-menu">
+            <div class="food-item-wrap all" id="recipe-dashboard">
+                <div class="food-item lorem-type"
+                     th:each="recipe : ${recipes}"
+                     th:object="${recipe}"
+                >
+                    <a class="recipe-detail-a" th:href="@{/recipes/recipes_dashboard/{recipeId}(recipeId=*{id})}">
+                        <div class="item-wrap bottom-up play-on-scroll">
+                            <div class="item-img">
+                                <div class="img-holder bg-img">
+                                    <img alt="Recipe image" th:src="*{images.iterator().next()}">
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div>
+                                    <h3>
+                                        <th:block th:text="*{name}"></th:block>
+                                    </h3>
+                                    <span> &#128337; <th:block th:text="*{hours}"></th:block>:<th:block
+                                            th:text="*{minutes}"></th:block> ч.</span>
+                                </div>
+                                <div class="cart-btn">
+                                    <i class="bx bx-cart-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="fragments/footer">Navbar</div>
+
+</div>
+</body>
+
+</html>

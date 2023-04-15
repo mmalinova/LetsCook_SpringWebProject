@@ -21,21 +21,21 @@ public class RecipeSpecification implements Specification<RecipeEntity> {
     public Predicate toPredicate(Root<RecipeEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         Predicate p = criteriaBuilder.conjunction();
 
-        if (searchRecipeDTO.getProductName() != null && !searchRecipeDTO.getProductName().isEmpty()) {
+        if (searchRecipeDTO.getName() != null && !searchRecipeDTO.getName().isEmpty()) {
             p.getExpressions().add(
-                    criteriaBuilder.and(criteriaBuilder.like(root.get("ingredients"), searchRecipeDTO.getProductName()))
-            );
-        }
-
-        if (searchRecipeDTO.getCategory() != null&& !searchRecipeDTO.getCategory().isEmpty()) {
-            p.getExpressions().add(
-                    criteriaBuilder.and(criteriaBuilder.equal(root.join("category").get("category"), searchRecipeDTO.getCategory()))
+                    criteriaBuilder.and(criteriaBuilder.like(root.get("name"), searchRecipeDTO.getName()))
             );
         }
 
         if (searchRecipeDTO.getPortions() != null) {
             p.getExpressions().add(
-                    criteriaBuilder.and(criteriaBuilder.equal(root.get("portions"), searchRecipeDTO.getPortions()))
+                    criteriaBuilder.and(criteriaBuilder.greaterThanOrEqualTo(root.get("portions"), searchRecipeDTO.getPortions()))
+            );
+        }
+
+        if (searchRecipeDTO.getSubcategory() != null) {
+            p.getExpressions().add(
+                    criteriaBuilder.and(criteriaBuilder.equal(root.get("subcategory"), searchRecipeDTO.getSubcategory()))
             );
         }
 

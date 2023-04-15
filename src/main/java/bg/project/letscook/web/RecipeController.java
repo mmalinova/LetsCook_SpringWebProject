@@ -1,22 +1,24 @@
 package bg.project.letscook.web;
 
 import bg.project.letscook.exception.ObjectNotFoundException;
-import bg.project.letscook.model.dto.recipe.CreateOrUpdateRecipeDTO;
+import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
+import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
 import bg.project.letscook.service.CategoryService;
 import bg.project.letscook.service.RecipeService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("recipes")
@@ -39,14 +41,14 @@ public class RecipeController {
     @GetMapping("/recipe_add")
     public String addRecipe(Model model) {
         if (!model.containsAttribute("addRecipeModel")) {
-            model.addAttribute("addRecipeModel", new CreateOrUpdateRecipeDTO());
+            model.addAttribute("addRecipeModel", new CreateRecipeDTO());
         }
         model.addAttribute("category", categoryService.getAllCategories());
         return "recipe_add";
     }
 
     @PostMapping("/recipe_add")
-    public String addRecipe(@Valid CreateOrUpdateRecipeDTO addRecipeDTO,
+    public String addRecipe(@Valid CreateRecipeDTO addRecipeDTO,
                             BindingResult bindingResult,
                             RedirectAttributes redirectAttributes,
                             @AuthenticationPrincipal UserDetails userDetails) {
@@ -66,17 +68,8 @@ public class RecipeController {
         return ResponseEntity.noContent().build();
     }
 
-    @PreAuthorize("isOwner(#id)")
-    @DeleteMapping("/{id}")
-    public String deleteOffer(
-            @PathVariable("id") Long id) {
-        recipeService.deleteOfferById(id);
-
-        return "redirect:/recipes/recipes_dashboard";
-    }
-
     @GetMapping("/recipes_dashboard/{id}")
-    public String getOfferDetail(@PathVariable("id") Long id,
+    public String getRecipeDetail(@PathVariable("id") Long id,
                                  Model model) {
 
         var recipeDto =
@@ -84,8 +77,34 @@ public class RecipeController {
                         orElseThrow(() -> new ObjectNotFoundException("Recipe with ID " +
                                 id + " not found!"));
 
+        if (recipeDto.isVegetarian()) recipeDto.setVegetarianString("Да");
+        else recipeDto.setVegetarianString("Не");
         model.addAttribute("recipe", recipeDto);
 
         return "recipe_details";
+    }
+
+    @GetMapping("/recipe_search")
+    public String searchQuery(@Valid SearchRecipeDTO searchRecipeDTO,
+                              BindingResult bindingResult,
+                              Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("searchRecipe", searchRecipeDTO);
+            model.addAttribute(
+                    "org.springframework.validation.BindingResult.searchRecipe",
+                    bindingResult);
+            return "recipe_search";
+        }
+
+        if (!model.containsAttribute("searchRecipe")) {
+            model.addAttribute("searchRecipe", searchRecipeDTO);
+        }
+
+        if (!searchRecipeDTO.isEmpty()) {
+            model.addAttribute("recipes", recipeService.searchRecipe(searchRecipeDTO));
+        }
+
+        return "recipe_search";
     }
 }

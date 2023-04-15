@@ -17,9 +17,18 @@ public class RecipeDetailDTO {
     private int minutes;
     private String ownerFirstName;
     private String ownerLastName;
+    private String vegetarianString;
 
 
     public RecipeDetailDTO() {
+    }
+
+    public String getVegetarianString() {
+        return vegetarianString;
+    }
+
+    public void setVegetarianString(String vegetarianString) {
+        this.vegetarianString = vegetarianString;
     }
 
     public Long getId() {
