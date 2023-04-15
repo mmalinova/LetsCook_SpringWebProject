@@ -1,21 +1,24 @@
 package bg.project.letscook.web;
 
-import bg.project.letscook.model.dto.UserRegisterDTO;
+import bg.project.letscook.model.dto.user.UserProfileDTO;
+import bg.project.letscook.model.dto.user.UserRegisterDTO;
+import bg.project.letscook.model.entity.UserEntity;
 import bg.project.letscook.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("user")
 public class UserController {
+
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -60,5 +63,54 @@ public class UserController {
         redirectAttributes.addFlashAttribute("bad_credentials", true);
 
         return "redirect:/user/login";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Principal principal, Model model) {
+        String username = principal.getName();
+        UserEntity user = userService.getUser(username);
+
+        UserProfileDTO userProfile = new UserProfileDTO(
+                user.getId(),
+                user.getEmail(),
+                user.getFirstName(),
+                user.getLastName()
+        );
+
+        model.addAttribute("user", userProfile);
+
+        return "profile";
+    }
+
+    @PreAuthorize("isUserOrAdministrator()")
+    @GetMapping("/profile/{id}/edit")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        var user = userService.getUser(id);
+
+        model.addAttribute("user", user);
+
+        return "profile_edit";
+    }
+
+    @PostMapping("/profile_edit")
+    public String edit(Principal principal, @Valid UserProfileDTO userProfileDTO,
+                       BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes) {
+        String username = principal.getName();
+        UserEntity user = userService.getUser(username);
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("user", userProfileDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", bindingResult);
+
+            return "redirect:/user/profile";
+        }
+        userService.update(
+                user.getId(),
+                user.getEmail(),
+                userProfileDTO.getFirstName(),
+                userProfileDTO.getLastName()
+        );
+        return "redirect:/user/profile";
     }
 }

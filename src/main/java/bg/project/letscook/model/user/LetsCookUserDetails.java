@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public class LetsCookUserDetails implements UserDetails {
 
+    private final Long id;
     private final String password;
     private final String username;
     private final String firstName;
@@ -37,12 +38,14 @@ public class LetsCookUserDetails implements UserDetails {
     }
 
     public LetsCookUserDetails(
+            Long id,
             String password,
             String username,
             String firstName,
             String lastName,
             Collection<GrantedAuthority> authorities
     ) {
+        this.id = id;
         this.password = password;
         this.username = username;
         this.firstName = firstName;

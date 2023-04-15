@@ -1,11 +1,12 @@
 package bg.project.letscook.model.entity;
 
-import bg.project.letscook.model.enums.CategoryEnum;
 import bg.project.letscook.model.enums.SubcategoryEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "recipe")
@@ -26,16 +27,19 @@ public class RecipeEntity extends BaseEntity {
     @Positive
     private int hours;
     @Column(nullable = false)
-    @Positive
     private int minutes;
     @Column(name = "created_on", nullable = false)
     private Date createdOn;
     @Column(nullable = false)
     private boolean approved;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String ingredients;
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
-    private UserEntity ownerId;
-    @ManyToMany(fetch = FetchType.EAGER)
+    private UserEntity owner;
+    @ManyToMany(mappedBy = "likedRecipes")
+    private Set<UserEntity> likes = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
@@ -44,138 +48,139 @@ public class RecipeEntity extends BaseEntity {
     private Set<ImageEntity> images = new HashSet<>();
     @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL)
     private Set<CommentEntity> comments = new HashSet<>();
-    @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL)
-    private Set<IngredientEntity> ingredients = new HashSet<>();
-    @ManyToMany(mappedBy = "viewedRecipes")
-    Set<UserEntity> views = new HashSet<>();
-    @ManyToMany(mappedBy = "likedRecipes")
-    Set<UserEntity> likes = new HashSet<>();
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public RecipeEntity setName(String name) {
         this.name = name;
+        return this;
     }
 
     public SubcategoryEnum getSubcategory() {
         return subcategory;
     }
 
-    public void setSubcategory(SubcategoryEnum subcategory) {
+    public RecipeEntity setSubcategory(SubcategoryEnum subcategory) {
         this.subcategory = subcategory;
+        return this;
     }
 
     public boolean isVegetarian() {
         return vegetarian;
     }
 
-    public void setVegetarian(boolean vegetarian) {
+    public RecipeEntity setVegetarian(boolean vegetarian) {
         this.vegetarian = vegetarian;
+        return this;
     }
 
     public int getPortions() {
         return portions;
     }
 
-    public void setPortions(int portions) {
+    public RecipeEntity setPortions(int portions) {
         this.portions = portions;
+        return this;
     }
 
     public String getSteps() {
         return steps;
     }
 
-    public void setSteps(String steps) {
+    public RecipeEntity setSteps(String steps) {
         this.steps = steps;
+        return this;
     }
 
     public int getHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public RecipeEntity setHours(int hours) {
         this.hours = hours;
+        return this;
     }
 
     public int getMinutes() {
         return minutes;
     }
 
-    public void setMinutes(int minutes) {
+    public RecipeEntity setMinutes(int minutes) {
         this.minutes = minutes;
+        return this;
     }
 
     public Date getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public RecipeEntity setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
+        return this;
     }
 
     public boolean isApproved() {
         return approved;
     }
 
-    public void setApproved(boolean approved) {
+    public RecipeEntity setApproved(boolean approved) {
         this.approved = approved;
+        return this;
     }
 
-    public UserEntity getOwnerId() {
-        return ownerId;
+    public UserEntity getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(UserEntity ownerId) {
-        this.ownerId = ownerId;
+    public RecipeEntity setOwner(UserEntity owner) {
+        this.owner = owner;
+        return this;
     }
 
     public Set<CategoryEntity> getCategory() {
         return category;
     }
 
-    public void setCategory(Set<CategoryEntity> category) {
+    public RecipeEntity setCategory(Set<CategoryEntity> category) {
         this.category = category;
+        return this;
     }
 
     public Set<ImageEntity> getImages() {
         return images;
     }
 
-    public void setImages(Set<ImageEntity> images) {
+    public RecipeEntity setImages(Set<ImageEntity> images) {
         this.images = images;
+        return this;
     }
 
     public Set<CommentEntity> getComments() {
         return comments;
     }
 
-    public void setComments(Set<CommentEntity> comments) {
+    public RecipeEntity setComments(Set<CommentEntity> comments) {
         this.comments = comments;
+        return this;
     }
 
-    public Set<IngredientEntity> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<IngredientEntity> ingredients) {
+    public RecipeEntity setIngredients(String ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public Set<UserEntity> getViews() {
-        return views;
-    }
-
-    public void setViews(Set<UserEntity> views) {
-        this.views = views;
+        return this;
     }
 
     public Set<UserEntity> getLikes() {
         return likes;
     }
 
-    public void setLikes(Set<UserEntity> likes) {
+    public RecipeEntity setLikes(Set<UserEntity> likes) {
         this.likes = likes;
+        return this;
     }
 }

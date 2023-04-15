@@ -15,7 +15,8 @@ public class CategoryEntity extends BaseEntity {
         return category;
     }
 
-    public void setCategory(CategoryEnum category) {
+    public CategoryEntity setCategory(CategoryEnum category) {
         this.category = category;
+        return this;
     }
 }

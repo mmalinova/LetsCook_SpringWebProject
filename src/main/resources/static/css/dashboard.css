@@ -1,6 +1,10 @@
 #recipes-section {
     font-family: 'Times New Roman', Times, serif;;
 }
+.recipe-detail-a {
+    text-decoration: none;
+    color: black;
+}
 .bg-img {
     background-position: center;
     background-size: cover;
@@ -56,6 +60,10 @@
     height: 100%;
     transition: .5s ease-in-out;
     border-radius: 2rem;
+}
+.img-holder img {
+    max-width: 100%;
+    max-height: 100%;
 }
 .img-holder:hover {
     transform: scale(2) rotate(45deg);

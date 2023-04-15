@@ -30,7 +30,6 @@ public class SecurityConfig {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
 //                requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll().
-                // everyone can login and register
                         antMatchers(
                                 "/",
                         "/user/login",
@@ -40,9 +39,15 @@ public class SecurityConfig {
                         "/terms_of_use",
                         "/data_policy",
                         "/contacts",
-                        "/profile",
-                        "/recipe/**"
+                        "/user/profile",
+                        "/recipes/recipe_details",
+                        "/recipes/recipes_dashboard/**",
+                        "/maintenance"
                         ).permitAll().
+                antMatchers(
+                        "/recipe/recipe_add",
+                        "user/profile_edit"
+                ).authenticated().
                 // all other pages are available for logger in users
                         anyRequest().
                 authenticated().

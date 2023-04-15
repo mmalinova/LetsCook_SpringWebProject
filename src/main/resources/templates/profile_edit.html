@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th=http://www.thymeleaf.org>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
+    <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
+          property="description">
+    <link href="/images/icon.png" rel="icon" type="image/x-icon">
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Да сготвим - Вход</title>
+</head>
+<body>
+<!-- Login Page -->
+<section id="edit">
+    <div class="row container">
+        <div class="form-group col-md-12 mb-3" style="height: 640px">
+            <a id="icon" th:href="@{/}">
+                <img alt="logo" id="login_logo" src="/images/lets_cook.png">
+            </a>
+            <form id="edit-form"
+                  th:action="@{/user/profile_edit}"
+                  th:method="POST">
+                <h2>Редактиране на имената</h2>
+                <p>Моля, въведи своите данни.</p>
+                <hr>
+                <p>Име</p>
+                <input
+                        class="form-control"
+                        name="firstName"
+                        placeholder="Въведи име"
+                        style="margin-top: -12px"
+                        th:value="${firstName}"
+                        type="text"
+                >
+                <p class="errors alert alert-danger" style="margin-top: -15px" th:if="${bad_credentials}">
+                    Невалидно име.
+                </p>
+                <p>Фамилия</p>
+                <input
+                        class="form-control"
+                        name="lastName"
+                        placeholder="Въведи фамилия"
+                        style="margin-top: -12px"
+                        th:value="${lastName}"
+                        type="text"
+                >
+                <p class="errors alert alert-danger" style="margin-top: -15px" th:if="${bad_credentials}">
+                    Невалидна фамилия.
+                </p>
+                <input class="editbtn" type="submit" value="Редактиране">
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

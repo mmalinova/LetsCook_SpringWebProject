@@ -1,7 +1,7 @@
-var i;
-var index = 0, slideIndex = 1;
-var slides = document.getElementsByClassName("mySlides");
-var dots = document.getElementsByClassName("dot");
+let i;
+let index = 0, slideIndex = 1;
+const slides = document.getElementsByClassName("mySlides");
+const dots = document.getElementsByClassName("dot");
 window.addEventListener('load', (event) => {
     autoShowSlides();
 });

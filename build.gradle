@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
@@ -29,6 +30,7 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.2'
     testImplementation 'org.springframework.security:spring-security-test'
+    implementation'org.springframework.security:spring-security-oauth2-client:5.7.1'
 }
 
 tasks.named('test') {

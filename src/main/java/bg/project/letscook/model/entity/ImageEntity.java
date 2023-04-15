@@ -15,15 +15,17 @@ public class ImageEntity extends BaseEntity {
         return imageURL;
     }
 
-    public void setImageURL(String imageURL) {
+    public ImageEntity setImageURL(String imageURL) {
         this.imageURL = imageURL;
+        return this;
     }
 
     public RecipeEntity getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(RecipeEntity recipeId) {
+    public ImageEntity setRecipeId(RecipeEntity recipeId) {
         this.recipeId = recipeId;
+        return this;
     }
 }

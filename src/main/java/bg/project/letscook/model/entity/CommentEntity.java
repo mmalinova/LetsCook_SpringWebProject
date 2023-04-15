@@ -23,39 +23,44 @@ public class CommentEntity extends BaseEntity {
         return text;
     }
 
-    public void setText(String text) {
+    public CommentEntity setText(String text) {
         this.text = text;
+        return this;
     }
 
     public Date getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public CommentEntity setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
+        return this;
     }
 
     public boolean isApproved() {
         return approved;
     }
 
-    public void setApproved(boolean approved) {
+    public CommentEntity setApproved(boolean approved) {
         this.approved = approved;
+        return this;
     }
 
     public UserEntity getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(UserEntity ownerId) {
+    public CommentEntity setOwnerId(UserEntity ownerId) {
         this.ownerId = ownerId;
+        return this;
     }
 
     public RecipeEntity getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(RecipeEntity recipeId) {
+    public CommentEntity setRecipeId(RecipeEntity recipeId) {
         this.recipeId = recipeId;
+        return this;
     }
 }

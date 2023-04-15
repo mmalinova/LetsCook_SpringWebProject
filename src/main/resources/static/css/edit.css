@@ -1,0 +1,12 @@
+.editbtn {
+    background-color: rgb(255, 211, 158);
+    color: white;
+    padding: 16px 16px;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.editbtn:hover {
+    opacity: 0.5;
+}

@@ -1,5 +1,6 @@
 package bg.project.letscook.config;
 
+import bg.project.letscook.interceptor.MaintenanceInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -10,16 +11,16 @@ public class WebConfig implements WebMvcConfigurer {
 
     private final LocaleChangeInterceptor localeChangeInterceptor;
 
-//    private final MaintenanceInterceptor maintenanceInterceptor;
+    private final MaintenanceInterceptor maintenanceInterceptor;
 
-    public WebConfig(LocaleChangeInterceptor localeChangeInterceptor/*, MaintenanceInterceptor maintenanceInterceptor*/) {
+    public WebConfig(LocaleChangeInterceptor localeChangeInterceptor, MaintenanceInterceptor maintenanceInterceptor) {
         this.localeChangeInterceptor = localeChangeInterceptor;
-//        this.maintenanceInterceptor = maintenanceInterceptor;
+        this.maintenanceInterceptor = maintenanceInterceptor;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor);
-//        registry.addInterceptor(maintenanceInterceptor);
+        registry.addInterceptor(maintenanceInterceptor);
     }
 }

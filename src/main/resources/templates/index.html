@@ -4,120 +4,131 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
-    <meta property="description"
-        content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
-    <link rel="icon" type="image/x-icon" href="/images/icon.png">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
+    <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
+          property="description">
+    <link href="/images/icon.png" rel="icon" type="image/x-icon">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
     <script src="/js/app.js" type="module"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <title>Да сготвим - сготви бързо, лесно, вкусно</title>
 </head>
 
 <body>
-    <div id="container">
+<div id="container">
 
-        <div th:replace="fragments/navbar">Navbar</div>
+    <div th:replace="fragments/navbar">Navbar</div>
 
-        <div id="avHeaderFeat">
-            <div id="avSearchBar">
-                <input type="text" id="searchVal" name="search" placeholder="ТЪРСИ РЕЦЕПТА ПО ИМЕ" value="" />
-            </div>
-        </div>
-
-        <form id="Подходящи рецепти" class="search-by-product">
-            <div>
-                <label for="mySearch" style="text-align:center">Търси рецепта по продукти и
-                    количество:</label><br>
-                <input type="search" id="mySearch" name="productName" placeholder="ИМЕ НА ПРОДУКТА" size="40">
-                <input type="search" id="mySearch" name="productQuan" placeholder="КОЛИЧЕСТВО" size="25">
-                <input type="search" id="mySearch" name="productUnit" placeholder="МЕРНА ЕДИНИЦА" size="25">
-                <button>Търси</button>
-                <span class="validity"></span>
-            </div>
+    <div class="form">
+        <form class="search-by">
+            <input id="searchVal" name="search" placeholder="ТЪРСИ РЕЦЕПТА ПО ИМЕ" size="50" type="search" value=""/>
+            <button>Търси</button>
+            <span class="validity"></span>
         </form>
-
-        <hr style="width:100%;text-align:left;margin-left:0">
-        <main id="site-content">
-            <!-- Main Content -->
-            <!-- Slideshow container -->
-            <div class="slideshow-container">
-                <div class="mySlides">
-                    <div class="numbertext">1 / 4</div>
-                    <img src="/images/carousel/pizza.jpg" style="width:100%">
-                </div>
-                <div class="mySlides" style="display: none;">
-                    <div class="numbertext">2 / 4</div>
-                    <img src="/images/carousel/salat.jpg" style="width:100%">
-                </div>
-                <div class="mySlides" style="display: none;">
-                    <div class="numbertext">3 / 4</div>
-                    <img src="/images/carousel/lunch.jpg" style="width:100%">
-                </div>
-                <div class="mySlides" style="display: none;">
-                    <div class="numbertext">4 / 4</div>
-                    <img src="/images/carousel/pancakes.jpg" style="width:100%">
-                </div>
-                <!-- Next and previous buttons -->
-                <a class="prev">&#10094;</a>
-                <a class="next">&#10095;</a>
-            </div>
-            <!-- The dots/circles -->
-            <div style="text-align:center">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <hr style="width:100%;text-align:left;margin-left:0">
-
-            <p>Категории</p>
-            <section class="categories">
-                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/1.png" alt="Основни ястия" id="Основни ястия"
-                        name="основно" />
-                    <span class="catHover"></span><span class="iconHold" id="Основни ястия" name="основно"><img
-                            src="/images/small_1.png" alt="Основни ястия" id="Основни ястия" name="основно">Основни
-                        ястия</span> </a>
-                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="images/2.png" alt="Супи" id="Супи" name="супа" />
-                    <span class="catHover"></span><span class="iconHold" id="Супи" name="супа"><img
-                            src="/images/small_2.png" alt="Супи" id="Супи" name="супа">Супи</span>
-                </a>
-                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/3.png" alt="Салати" id="Салати"
-                        name="салата" /> <span class="catHover"></span><span class="iconHold" id="Салати"
-                        name="салата"><img src="/images/small_3.png" alt="Салати" id="Салати" name="салата">Салати</span>
-                </a>
-                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/4.png" alt="Предястия" id="Предястия"
-                        name="предястие" />
-                    <span class="catHover"></span><span class="iconHold" id="Предястия" name="предястие"><img
-                            src="/images/small_4.png" alt="Предястия" id="Предястия" name="предястие">Предястия</span>
-                </a>
-                <a th:href="@{/recipes_dashboard}" class="cat"> <img src="/images/5.png" alt="Десерти" id="Десерти"
-                        name="десерт" /> <span class="catHover"></span><span class="iconHold" id="Десерти"
-                        name="десерт"><img src="/images/small_5.png" alt="Десерти" id="Десерти"
-                            name="десерт">Десерти</span>
-                </a>
-            </section>
-            <hr style="width:100%;text-align:left;margin-top:40px">
-            <div class="recipe">
-                <p>Последно добавени</p>
-                <ul id="last-added-recipes" class="categories">
-                </ul>
-            </div>
-            <hr style="width:100%;text-align:left;margin-top:10">
-
-            <img id="screen" src="/images/tel.png" alt="screenshot">
-            <a class="download-app" href="https://play.google.com/store/apps">
-                <img id="download-btn" src="/images/button.png" alt="google play icon">
-            </a>
-        </main>
-
-        <div th:replace="fragments/footer">Navbar</div>
-
     </div>
+
+    <div class="form">
+        <form class="search-by">
+            <label for="mySearch" style="text-align:center; margin-top: 20px">Търси рецепта по продукт:</label><br>
+            <input id="mySearch" name="products" placeholder="ИМЕ НА ПРОДУКТА" size="40" type="search">
+            <input id="mySearch" name="category" placeholder="КАТЕГОРИЯ" size="25" type="search">
+            <input id="mySearch" name="portions" placeholder="БРОЙ ПОРЦИИ" size="25" type="search">
+            <button>Търси</button>
+            <span class="validity"></span>
+        </form>
+    </div>
+
+    <hr style="width:100%;text-align:left;margin-left:0">
+    <main id="site-content">
+        <!-- Main Content -->
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <p>
+            <div class="mySlides">
+                <div class="numbertext">1 / 4</div>
+                <img src="/images/carousel/pizza.jpg" style="width:100%">
+            </div>
+            <div class="mySlides" style="display: none;">
+                <div class="numbertext">2 / 4</div>
+                <img src="/images/carousel/salat.jpg" style="width:100%">
+            </div>
+            <div class="mySlides" style="display: none;">
+                <div class="numbertext">3 / 4</div>
+                <img src="/images/carousel/lunch.jpg" style="width:100%">
+            </div>
+            <div class="mySlides" style="display: none;">
+                <div class="numbertext">4 / 4</div>
+                <img src="/images/carousel/pancakes.jpg" style="width:100%">
+            </div>
+            <!-- Next and previous buttons -->
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            </p>
+        </div>
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <hr style="width:100%;text-align:left;margin-left:0">
+
+        <p>Категории</p>
+        <section class="categories">
+            <a class="cat" th:href="@{/recipes/recipes_dashboard}"> <img alt="Основни ястия" id="Основни ястия"
+                                                                 name="основно"
+                                                                 src="/images/1.png"/>
+                <span class="catHover"></span><span class="iconHold" id="Основни ястия" name="основно"><img
+                        alt="Основни ястия" id="Основни ястия" name="основно" src="/images/small_1.png">Основни
+                        ястия</span> </a>
+            <a class="cat" th:href="@{/recipes/recipes_dashboard}"> <img alt="Супи" id="Супи" name="супа" src="images/2.png"/>
+                <span class="catHover"></span><span class="iconHold" id="Супи" name="супа"><img
+                        alt="Супи" id="Супи" name="супа" src="/images/small_2.png">Супи</span>
+            </a>
+            <a class="cat" th:href="@{/recipes/recipes_dashboard}"> <img alt="Салати" id="Салати" name="салата"
+                                                                 src="/images/3.png"/> <span
+                    class="catHover"></span><span
+                    class="iconHold" id="Салати"
+                    name="салата"><img alt="Салати" id="Салати" name="салата" src="/images/small_3.png">Салати</span>
+            </a>
+            <a class="cat" th:href="@{/recipes/recipes_dashboard}"> <img alt="Предястия" id="Предястия" name="предястие"
+                                                                 src="/images/4.png"/>
+                <span class="catHover"></span><span class="iconHold" id="Предястия" name="предястие"><img
+                        alt="Предястия" id="Предястия" name="предястие" src="/images/small_4.png">Предястия</span>
+            </a>
+            <a class="cat" th:href="@{/recipes/recipes_dashboard}"> <img alt="Десерти" id="Десерти" name="десерт"
+                                                                 src="/images/5.png"/> <span
+                    class="catHover"></span><span
+                    class="iconHold" id="Десерти"
+                    name="десерт"><img alt="Десерти" id="Десерти" name="десерт"
+                                       src="/images/small_5.png">Десерти</span>
+            </a>
+        </section>
+        <hr style="width:100%;text-align:left;margin-top:40px">
+        <div class="recipe">
+            <p>Последно добавени</p>
+            <ul class="categories" id="last-added-recipes">
+            </ul>
+        </div>
+        <hr style="width:100%;text-align:left;margin-top:10">
+
+        <p>Налично и за Android устройства</p>
+        <div id="dow-btn">
+            <img alt="screenshot" id="screen" src="/images/tel.png">
+            <a class="download-app" href="https://play.google.com/store/apps">
+                <img alt="google play icon" id="download-btn" src="/images/button.png">
+            </a>
+        </div>
+    </main>
+
+    <div th:replace="fragments/footer">Navbar</div>
+
+</div>
 </body>
 
 </html>

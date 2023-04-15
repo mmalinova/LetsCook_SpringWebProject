@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class LetsCookUserDetailsService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public LetsCookUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -27,6 +27,7 @@ public class LetsCookUserDetailsService implements UserDetailsService {
 
     private UserDetails map(UserEntity userEntity) {
         return new LetsCookUserDetails(
+                userEntity.getId(),
                 userEntity.getPassword(),
                 userEntity.getEmail(),
                 userEntity.getFirstName(),

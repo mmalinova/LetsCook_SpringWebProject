@@ -1,4 +1,4 @@
-package bg.project.letscook.model.dto;
+package bg.project.letscook.model.dto.user;
 
 import bg.project.letscook.model.validation.MatchPasswords;
 import bg.project.letscook.model.validation.UniqueEmail;

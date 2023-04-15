@@ -1,15 +1,18 @@
-package bg.project.letscook.model.dto;
+package bg.project.letscook.model.dto.recipe;
 
+import bg.project.letscook.model.entity.CommentEntity;
+import bg.project.letscook.model.entity.ImageEntity;
 import bg.project.letscook.model.enums.CategoryEnum;
 import bg.project.letscook.model.enums.SubcategoryEnum;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.Set;
 
-public class AddRecipeDTO {
+public class CreateOrUpdateRecipeDTO {
+
     @NotBlank
     private String name;
     @NotNull
@@ -19,25 +22,22 @@ public class AddRecipeDTO {
     @NotNull
     private boolean vegetarian;
     @NotBlank
-    private String imageURL;
+    private String firstImage;
+    private String secondImage;
+    private String thirdImage;
     @NotNull
     @Min(1)
     private int portions;
     @NotBlank
-    private String productName;
-    @NotNull
-    @Positive
-    private float quantity;
-    @NotBlank
-    private String measureUnit;
+    private String ingredients;
     @NotBlank
     private String steps;
     @NotNull
     @Positive
     private int hours;
     @NotNull
-    @Positive
     private int minutes;
+    private Set<CommentEntity> comments;
 
     public String getName() {
         return name;
@@ -71,12 +71,28 @@ public class AddRecipeDTO {
         this.vegetarian = vegetarian;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getFirstImage() {
+        return firstImage;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setFirstImage(String firstImage) {
+        this.firstImage = firstImage;
+    }
+
+    public String getSecondImage() {
+        return secondImage;
+    }
+
+    public void setSecondImage(String secondImage) {
+        this.secondImage = secondImage;
+    }
+
+    public String getThirdImage() {
+        return thirdImage;
+    }
+
+    public void setThirdImage(String thirdImage) {
+        this.thirdImage = thirdImage;
     }
 
     public int getPortions() {
@@ -87,28 +103,12 @@ public class AddRecipeDTO {
         this.portions = portions;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getIngredients() {
+        return ingredients;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public float getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(float quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getMeasureUnit() {
-        return measureUnit;
-    }
-
-    public void setMeasureUnit(String measureUnit) {
-        this.measureUnit = measureUnit;
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getSteps() {
@@ -133,5 +133,13 @@ public class AddRecipeDTO {
 
     public void setMinutes(int minutes) {
         this.minutes = minutes;
+    }
+
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
     }
 }

@@ -1,17 +1,19 @@
 package bg.project.letscook.model.entity;
 
-import bg.project.letscook.model.validation.UniqueEmail;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class UserEntity extends BaseEntity {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_likes_recipes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+    Set<RecipeEntity> likedRecipes = new HashSet<>();
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -25,22 +27,10 @@ public class UserEntity extends BaseEntity {
     private String imageURL;
     @Column(nullable = false)
     private boolean active;
-    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<RecipeEntity> myRecipes = new HashSet<>();
-    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
-    private Set<IngredientEntity> myProducts = new HashSet<>();
-    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<CommentEntity> myComments = new HashSet<>();
-    @ManyToMany
-    @JoinTable(name = "user_views_recipes",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
-    Set<RecipeEntity> viewedRecipes = new HashSet<>();
-    @ManyToMany
-    @JoinTable(name = "user_likes_recipes",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
-    Set<RecipeEntity> likedRecipes = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -51,95 +41,89 @@ public class UserEntity extends BaseEntity {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public UserEntity setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public UserEntity setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public UserEntity setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageURL(String imageURL) {
+    public UserEntity setImageURL(String imageURL) {
         this.imageURL = imageURL;
+        return this;
     }
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public UserEntity setActive(boolean active) {
         this.active = active;
+        return this;
     }
 
     public Set<RecipeEntity> getMyRecipes() {
         return myRecipes;
     }
 
-    public void setMyRecipes(Set<RecipeEntity> myRecipes) {
+    public UserEntity setMyRecipes(Set<RecipeEntity> myRecipes) {
         this.myRecipes = myRecipes;
-    }
-
-    public Set<IngredientEntity> getMyProducts() {
-        return myProducts;
-    }
-
-    public void setMyProducts(Set<IngredientEntity> myProducts) {
-        this.myProducts = myProducts;
+        return this;
     }
 
     public Set<CommentEntity> getMyComments() {
         return myComments;
     }
 
-    public void setMyComments(Set<CommentEntity> myComments) {
+    public UserEntity setMyComments(Set<CommentEntity> myComments) {
         this.myComments = myComments;
-    }
-
-    public Set<RecipeEntity> getViewedRecipes() {
-        return viewedRecipes;
-    }
-
-    public void setViewedRecipes(Set<RecipeEntity> viewedRecipes) {
-        this.viewedRecipes = viewedRecipes;
+        return this;
     }
 
     public Set<RecipeEntity> getLikedRecipes() {
         return likedRecipes;
     }
 
-    public void setLikedRecipes(Set<RecipeEntity> likedRecipes) {
+    public UserEntity setLikedRecipes(Set<RecipeEntity> likedRecipes) {
         this.likedRecipes = likedRecipes;
+        return this;
     }
 
     public Set<RoleEntity> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<RoleEntity> userRoles) {
+    public UserEntity setUserRoles(Set<RoleEntity> userRoles) {
         this.userRoles = userRoles;
+        return this;
     }
 }
