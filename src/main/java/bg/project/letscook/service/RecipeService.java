@@ -71,7 +71,7 @@ public class RecipeService {
                 map(recipeMapper::recipeEntityToRecipeDetailDTO).collect(Collectors.toSet());
     }
 
-    public Page<RecipeDetailDTO> getRecipes(Pageable pageable) {
+    public Page<RecipeDetailDTO> getAllRecipesPageable(Pageable pageable) {
         return recipeRepository.
                 findAll(pageable).
                 map(recipeMapper::recipeEntityToRecipeDetailDTO);

@@ -21,16 +21,16 @@
 <footer>
     <hr style="width:100%;text-align:left;margin-left:0;">
     <div class="footer">
-        <a th:href="@{/}">Начало</a>
-        <a th:href="@{/info}">Информация</a>
-        <a th:href="@{/terms_of_use}">Условия за ползване</a>
-        <a th:href="@{/data_policy}">Политика за поверителност на данните</a>
-        <a th:href="@{/contacts}">Контакти/За реклама</a>
+        <a th:href="@{/}"th:text="#{footer_home}">Начало</a>
+        <a th:href="@{/info}"th:text="#{footer_info}">Информация</a>
+        <a th:href="@{/terms_of_use}"th:text="#{footer_terms}">Условия за ползване</a>
+        <a th:href="@{/data_policy}"th:text="#{footer_policy}">Политика за поверителност на данните</a>
+        <a th:href="@{/contacts}"th:text="#{footer_contacts}">Контакти/За реклама</a>
     </div>
     <br>
     <ul id="social-media">
         <li>
-            <p>2022 &copy; dasgotvim.com</p>
+            <p>2023 &copy; dasgotvim.com</p>
         </li>
         <li>
             <a th:href="@{https://www.facebook.com/mihaela.malinova.98/}">

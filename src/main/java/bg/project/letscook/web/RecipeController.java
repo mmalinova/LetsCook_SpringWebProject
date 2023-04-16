@@ -7,6 +7,9 @@ import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
 import bg.project.letscook.model.enums.SubcategoryEnum;
 import bg.project.letscook.service.CategoryService;
 import bg.project.letscook.service.RecipeService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,6 +43,19 @@ public class RecipeController {
         model.addAttribute("recipes", recipeService.getAllRecipes());
         return "recipes_dashboard";
     }
+
+    //TODO Add Pageable functionality later
+//    @GetMapping("/recipes_dashboard")
+//    public String getAllRecipesPageable(
+//            Model model,
+//            @PageableDefault(
+//                    sort = "createdOn",
+//                    direction = Sort.Direction.DESC,
+//                    page = 0,
+//                    size = 5) Pageable pageable) {
+//        model.addAttribute("recipes", recipeService.getAllRecipesPageable(pageable));
+//        return "recipes_dashboard";
+//    }
 
     @GetMapping("/recipes_dashboard/category/{category}")
     public String getAllRecipesByCategory(@PathVariable("category") String category,
