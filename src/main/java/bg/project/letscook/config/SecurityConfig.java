@@ -43,6 +43,7 @@ public class SecurityConfig {
                         "/recipes/recipe_details",
                         "/recipes/recipe_search",
                         "/recipes/recipes_dashboard/**",
+                        "/recipes/evict",
                         "/maintenance"
                         ).permitAll().
                 antMatchers(

@@ -7,7 +7,9 @@ import bg.project.letscook.model.entity.CategoryEntity;
 import bg.project.letscook.model.entity.ImageEntity;
 import bg.project.letscook.model.entity.RecipeEntity;
 import bg.project.letscook.model.entity.UserEntity;
+import bg.project.letscook.model.enums.CategoryEnum;
 import bg.project.letscook.model.enums.RoleEnum;
+import bg.project.letscook.model.enums.SubcategoryEnum;
 import bg.project.letscook.model.mapper.RecipeMapper;
 import bg.project.letscook.repository.*;
 import org.springframework.cache.annotation.CacheEvict;
@@ -76,9 +78,30 @@ public class RecipeService {
 
     }
 
-    @Cacheable("recipeByName")
-    public Optional<RecipeDetailDTO> getRecipeByName(String name) {
-        return recipeRepository.findByName(name).map(recipeMapper::recipeEntityToRecipeDetailDTO);
+    @Cacheable("recipeByCategory")
+    public Set<RecipeDetailDTO> getRecipesByCategory(String category) {
+        CategoryEntity categoryEntity = categoryRepository.findByCategory(CategoryEnum.valueOf(category)).orElseThrow();
+        return recipeRepository.
+                findAllByCategory(categoryEntity).
+                stream().
+                map(recipeMapper::recipeEntityToRecipeDetailDTO).collect(Collectors.toSet());
+    }
+
+    @Cacheable("recipeBySubcategory")
+    public Set<RecipeDetailDTO> getRecipesBySubcategory(String subcategory) {
+        return recipeRepository.
+                findAllBySubcategory(SubcategoryEnum.valueOf(subcategory)).
+                stream().
+                map(recipeMapper::recipeEntityToRecipeDetailDTO).collect(Collectors.toSet());
+    }
+
+    @Cacheable("recipeByVegetarian")
+    public Set<RecipeDetailDTO> getRecipesByVegetarian(boolean isVegetarian) {
+        CategoryEntity categoryEntity = categoryRepository.findByCategory(CategoryEnum.ВЕЧЕРЯ).orElseThrow();
+        return recipeRepository.
+                findAllByVegetarianAndCategory(isVegetarian, categoryEntity).
+                stream().
+                map(recipeMapper::recipeEntityToRecipeDetailDTO).collect(Collectors.toSet());
     }
 
     @Cacheable("recipeById")
@@ -100,7 +123,7 @@ public class RecipeService {
                 orElseThrow();
 
         categoryEntity.setCategory(addRecipeDTO.getCategory());
-        newRecipe.setCategory(Set.of(categoryEntity));
+        newRecipe.setCategory(categoryEntity);
         newRecipe.setCreatedOn(date);
         newRecipe.setApproved(true);
         newRecipe.setOwner(owner);

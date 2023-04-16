@@ -1,5 +1,6 @@
 package bg.project.letscook.model.dto.recipe;
 
+import bg.project.letscook.model.enums.CategoryEnum;
 import bg.project.letscook.model.enums.SubcategoryEnum;
 
 public class SearchRecipeDTO {
@@ -7,6 +8,7 @@ public class SearchRecipeDTO {
     public String name;
     public Integer portions;
     public SubcategoryEnum subcategory;
+    public CategoryEnum category;
 
     public String getName() {
         return name;
@@ -32,10 +34,19 @@ public class SearchRecipeDTO {
         this.subcategory = subcategory;
     }
 
+    public CategoryEnum getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEnum category) {
+        this.category = category;
+    }
+
     public boolean isEmpty() {
         return (name == null || name.isEmpty()) &&
                 portions == null &&
-                subcategory == null;
+                subcategory == null &&
+                category == null;
     }
 }
 

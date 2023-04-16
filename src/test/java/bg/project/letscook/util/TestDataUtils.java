@@ -75,7 +75,7 @@ public class TestDataUtils {
                                          CategoryEntity categoryEntity) {
         var recipeEntity = new RecipeEntity().
                 setApproved(true).
-                setCategory(Set.of(categoryEntity)).
+                setCategory(categoryEntity).
                 setCreatedOn(date).
                 setImages(Set.of()).
                 setHours(2).

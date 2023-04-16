@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 public interface RecipeMapper {
 
     @Named("categoriesSet")
-    static Set<String> mapCategories(Set<CategoryEntity> categories) {
-        return categories.stream().map(category -> category.getCategory().name()).collect(Collectors.toSet());
+    static String mapCategories(CategoryEntity category) {
+        return category.getCategory().name();
     }
 
     @Named("imagesSet")
@@ -27,16 +27,16 @@ public interface RecipeMapper {
     }
 
     @Named("catMap")
-    static Set<CategoryEntity> catMap(CategoryEnum category) {
+    static CategoryEntity catMap(CategoryEnum category) {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setCategory(category);
-        return Set.of(categoryEntity);
+        return categoryEntity;
     }
 
     @Mapping(source = "category", target = "category", qualifiedByName = "catMap")
     RecipeEntity createRecipeDTOToRecipeEntity(CreateRecipeDTO createRecipeDTO);
 
-    @Mapping(source = "category", target = "categories", qualifiedByName = "categoriesSet")
+    @Mapping(source = "category", target = "category", qualifiedByName = "categoriesSet")
     @Mapping(source = "images", target = "images", qualifiedByName = "imagesSet")
     @Mapping(source = "owner.firstName", target = "ownerFirstName")
     @Mapping(source = "owner.lastName", target = "ownerLastName")

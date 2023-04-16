@@ -6,7 +6,7 @@ public class RecipeDetailDTO {
 
     private Long id;
     private String name;
-    private Set<String> categories;
+    private String category;
     private String subcategory;
     private boolean vegetarian;
     private Set<String> images;
@@ -56,12 +56,12 @@ public class RecipeDetailDTO {
         this.name = name;
     }
 
-    public Set<String> getCategories() {
-        return categories;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategories(Set<String> categories) {
-        this.categories = categories;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getSubcategory() {

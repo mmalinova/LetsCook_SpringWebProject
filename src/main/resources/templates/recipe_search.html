@@ -59,6 +59,19 @@
                     type="search"
                     value=""
             />
+            <select
+                    class="form-control"
+                    id="category"
+                    name="category"
+                    style="display: inline-block; height: 40px;padding: 0.375rem 0.75rem;line-height: 2;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: 0.25rem;transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                <option value="">- ИЗБЕБИ КАТЕГОРИЯ -</option>
+                <option th:each="cat : ${T(bg.project.letscook.model.enums.CategoryEnum).values()}"
+                        th:selected="${cat} == *{category}"
+                        th:text="${cat}"
+                        th:value="${cat}">
+                    Категория
+                </option>
+            </select>
             <select class="form-control"
                     id="subcategory"
                     name="subcategory"

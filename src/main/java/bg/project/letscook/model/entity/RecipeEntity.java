@@ -39,11 +39,9 @@ public class RecipeEntity extends BaseEntity {
     private UserEntity owner;
     @ManyToMany(mappedBy = "likedRecipes")
     private Set<UserEntity> likes = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "recipe_category",
-            joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<CategoryEntity> category = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryEntity category;
     @OneToMany(mappedBy = "recipeId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ImageEntity> images = new HashSet<>();
     @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL)
@@ -139,11 +137,11 @@ public class RecipeEntity extends BaseEntity {
         return this;
     }
 
-    public Set<CategoryEntity> getCategory() {
+    public CategoryEntity getCategory() {
         return category;
     }
 
-    public RecipeEntity setCategory(Set<CategoryEntity> category) {
+    public RecipeEntity setCategory(CategoryEntity category) {
         this.category = category;
         return this;
     }

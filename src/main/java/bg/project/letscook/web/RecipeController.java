@@ -4,6 +4,7 @@ import bg.project.letscook.exception.ObjectNotFoundException;
 import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
 import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
+import bg.project.letscook.model.enums.SubcategoryEnum;
 import bg.project.letscook.service.CategoryService;
 import bg.project.letscook.service.RecipeService;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,27 @@ public class RecipeController {
     @GetMapping("/recipes_dashboard")
     public String getAllRecipes(Model model) {
         model.addAttribute("recipes", recipeService.getAllRecipes());
+        return "recipes_dashboard";
+    }
+
+    @GetMapping("/recipes_dashboard/category/{category}")
+    public String getAllRecipesByCategory(@PathVariable("category") String category,
+                                             Model model) {
+        model.addAttribute("recipes", recipeService.getRecipesByCategory(category));
+        return "recipes_dashboard";
+    }
+
+    @GetMapping("/recipes_dashboard/vegetarian/{vegetarian}")
+    public String getAllDinnerRecipesByVegetarian(@PathVariable("vegetarian") int isVegetarian,
+                                             Model model) {
+        model.addAttribute("recipes", recipeService.getRecipesByVegetarian(isVegetarian > 0));
+        return "recipes_dashboard";
+    }
+
+    @GetMapping("/recipes_dashboard/subcategory/{subcategory}")
+    public String getAllRecipesBySubcategory(@PathVariable("subcategory") String subcategory,
+                                             Model model) {
+        model.addAttribute("recipes", recipeService.getRecipesBySubcategory(subcategory));
         return "recipes_dashboard";
     }
 

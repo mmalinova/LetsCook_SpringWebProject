@@ -39,6 +39,12 @@ public class RecipeSpecification implements Specification<RecipeEntity> {
             );
         }
 
+        if (searchRecipeDTO.getCategory() != null) {
+            p.getExpressions().add(
+                    criteriaBuilder.and(criteriaBuilder.equal(root.get("category").get("category"), searchRecipeDTO.getCategory()))
+            );
+        }
+
         return p;
     }
 }

@@ -42,59 +42,59 @@
         <li><a class="active" id="icon" th:href="@{/}">
             <img alt="logo" id="logo" src="/images/logo.png">
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard}"><th:block th:text="#{navbar_breakfast}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ЗАКУСКА}"><th:block th:text="#{navbar_breakfast}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_breakfasts}">Закуски</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ЗАКУСКА}" th:text="#{navbar_breakfasts}">Закуски</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/БАНИЦА}"
                        th:text="#{navbar_pie}">Баници</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ПАСТА}"
                        th:text="#{navbar_pasta}">Паста</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard}"><th:block th:text="#{navbar_lunch}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ОБЯД}"><th:block th:text="#{navbar_lunch}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
-                       th:text="#{navbar_cream_soup}">Крем супи</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/СУПА}"
+                       th:text="#{navbar_soups_and_stews}">Супи и чорби</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
-                       th:text="#{navbar_soups_and_stews}">Супи и чорби</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/САЛАТА}"
+                       th:text="#{navbar_salads}">Салати</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard}"><th:block th:text="#{navbar_dinner}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ВЕЧЕРЯ}"><th:block th:text="#{navbar_dinner}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_meat_dishes}">Ястия
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/vegetarian/0}" th:text="#{navbar_meat_dishes}">Ястия
                         с месо</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/vegetarian/1}"
                        th:text="#{navbar_meals_without_meat}">Ястия без месо</a>
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard}"><th:block th:text="#{navbar_dessert}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ДЕСЕРТ}"><th:block th:text="#{navbar_dessert}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/КРЕМ}"
                        th:text="#{navbar_creams}">Кремове</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat"  th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_muffins}">Кексове</a>
+                    <a class="search-by-subcat"  th:href="@{/recipes/recipes_dashboard/subcategory/КЕКС}" th:text="#{navbar_muffins}">Кексове</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_sweets}">Сладкиши</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/СЛАДКИШ}" th:text="#{navbar_sweets}">Сладкиши</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard}"
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ТОРТА}"
                        th:text="#{navbar_cakes}">Торти</a>
                 </li>
             </ul>
