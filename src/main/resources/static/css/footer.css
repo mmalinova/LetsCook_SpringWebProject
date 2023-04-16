@@ -2,6 +2,7 @@ footer {
     background-color: rgb(255, 211, 158);
     font-family: "Sofia", sans-serif;
 }
+
 .footer a {
     color: black;
     text-align: center;
@@ -10,12 +11,14 @@ footer {
     font-size: 16px;
     font-family: 'Lobster', cursive;
 }
+
 #social-media {
     width: 40%;
     margin: auto;
     list-style-type: none;
     overflow: hidden;
-} 
+}
+
 #social-media li {
     float: left;
 }

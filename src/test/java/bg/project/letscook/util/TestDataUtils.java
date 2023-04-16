@@ -103,7 +103,7 @@ public class TestDataUtils {
     public ImageEntity createTestImage(RecipeEntity recipeEntity) {
         ImageEntity image = new ImageEntity().
                 setImageURL("https://www.google.com/search?q=recipe&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjl8ab_wKv-AhUIQ_EDHZnLBwMQ_AUoAnoECAEQBA&biw=1455&bih=679&dpr=1.32#imgrc=szRpvsGF2Q_DAM").
-                setRecipeId(recipeEntity);
+                setRecipe(recipeEntity);
         return imageRepository.save(image);
     }
 
@@ -112,16 +112,17 @@ public class TestDataUtils {
         CommentEntity comment = new CommentEntity().
                 setApproved(true).
                 setCreatedOn(date).
-                setOwnerId(owner).
-                setText("asd").setRecipeId(recipeEntity);
+                setOwner(owner).
+                setText("asd").setRecipe(recipeEntity);
         return commentRepository.save(comment);
     }
 
     public void cleanUpDatabase() {
-        recipeRepository.deleteAll();
-        userRepository.deleteAll();
-        userRoleRepository.deleteAll();
+        commentRepository.deleteAll();
         imageRepository.deleteAll();
+        recipeRepository.deleteAll();
+        userRoleRepository.deleteAll();
+        userRepository.deleteAll();
         categoryRepository.deleteAll();
     }
 }

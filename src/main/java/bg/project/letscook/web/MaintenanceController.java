@@ -8,6 +8,6 @@ public class MaintenanceController {
 
     @GetMapping("/maintenance")
     public String maintenance() {
-        return  "maintenance";
+        return "maintenance";
     }
 }

@@ -3,54 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна">
-    <meta property="description"
-        content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие.">
-    <link rel="icon" type="image/x-icon" href="/images/icon.png">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
+    <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
+          property="description">
+    <link href="/images/icon.png" rel="icon" type="image/x-icon">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
     <title>Да сготвим - Контакти</title>
     <script src="/js/contact.js" type="module"></script>
 </head>
 
 <body id="contact-body">
-    <div id="container">
+<div id="container">
 
-        <div th:replace="fragments/navbar">Navbar</div>
+    <div th:replace="fragments/navbar">Navbar</div>
 
-        <section id="contact">
-            <h2 style="margin-bottom: 26px" class="section-header">Свържи се с нас&#10083;&#65039;</h2>
-            <div class="contact-wrapper">
+    <section id="contact">
+        <h2 class="section-header" style="margin-bottom: 26px">Свържи се с нас&#10083;&#65039;</h2>
+        <div class="contact-wrapper">
 
-                <!-- Left contact page -->
-                <form id="contact_form" class="contact-form" method="post">
-                    <input type="email" name="email" id="email" placeholder="Въведи имейла си">
-                    <input type="text" name="name" id="name" placeholder="Въведи името си">
-                    <textarea name="mess" id="message" cols="30" rows="10" placeholder="Въведи съобщение"></textarea>
-                    <input id="contact_submit" type="submit" value="Изпрати">
-                </form>
+            <!-- Left contact page -->
+            <form class="contact-form" id="contact_form" method="post">
+                <input id="email" name="email" placeholder="Въведи имейла си" type="email">
+                <input id="name" name="name" placeholder="Въведи името си" type="text">
+                <textarea cols="30" id="message" name="mess" placeholder="Въведи съобщение" rows="10"></textarea>
+                <input id="contact_submit" type="submit" value="Изпрати">
+            </form>
 
-                <!-- Right contact page -->
-                <div class="direct-contact-container">
+            <!-- Right contact page -->
+            <div class="direct-contact-container">
 
-                    <ul style="margin-top: 130px" class="contact-list">
-                        <li class="contact-list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
-                                    href="tel:1-212-555-5555" title="Give me a call">(+359) 899-99-9999</a></span></i>
-                        </li>
+                <ul class="contact-list" style="margin-top: 130px">
+                    <li class="contact-list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
+                            href="tel:1-212-555-5555" title="Give me a call">(+359) 899-99-9999</a></span></i>
+                    </li>
 
-                        <li class="contact-list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
-                                    href="mailto:#" title="Изпрати ми имейл">malinova29@gmail.com</a></span></i></li>
+                    <li class="contact-list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
+                            href="mailto:#" title="Изпрати ми имейл">malinova29@gmail.com</a></span></i></li>
 
-                    </ul>
-                </div>
-
+                </ul>
             </div>
-        </section>
 
-        <div th:replace="fragments/footer">Navbar</div>
+        </div>
+    </section>
 
-    </div>
+    <div th:replace="fragments/footer">Navbar</div>
+
+</div>
 </body>
 
 </html>

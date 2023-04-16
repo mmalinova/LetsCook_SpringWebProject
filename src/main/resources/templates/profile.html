@@ -26,7 +26,8 @@
             <div class="center">
                 <div class="col-md-7">
                     <div class="profile-card p-3 py-4" th:object="${user}">
-                        <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
+                        <div class="text-center"><img class="rounded-circle" src="/images/profile.jpg" width="100">
+                        </div>
                         <div class="text-center mt-3">
                             <h3 class="mt-4 mb-0" th:text="*{fullName}"></h3>
                             <span>Архитект</span><br><br>

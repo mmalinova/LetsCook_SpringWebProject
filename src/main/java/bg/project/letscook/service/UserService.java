@@ -17,11 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -54,7 +51,7 @@ public class UserService {
         return user.getUserRoles().
                 stream().
                 anyMatch(r -> r.getRole() == RoleEnum.USER
-                || r.getRole() == RoleEnum.ADMIN);
+                        || r.getRole() == RoleEnum.ADMIN);
     }
 
     public void createUserIfNotExist(String email) {

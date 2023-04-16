@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@MatchPasswords (first = "password", second = "repeatPass", message = "Паролите не съвпадат")
+@MatchPasswords(first = "password", second = "repeatPass", message = "Паролите не съвпадат")
 public class UserRegisterDTO {
     @NotBlank
     @Size(min = 2, max = 20)

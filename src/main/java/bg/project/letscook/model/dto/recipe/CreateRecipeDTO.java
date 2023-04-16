@@ -1,7 +1,6 @@
 package bg.project.letscook.model.dto.recipe;
 
 import bg.project.letscook.model.entity.CommentEntity;
-import bg.project.letscook.model.entity.ImageEntity;
 import bg.project.letscook.model.enums.CategoryEnum;
 import bg.project.letscook.model.enums.SubcategoryEnum;
 

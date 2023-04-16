@@ -14,6 +14,22 @@ public class LetsCookUserDetails implements UserDetails {
     private final String lastName;
     private final Collection<GrantedAuthority> authorities;
 
+    public LetsCookUserDetails(
+            Long id,
+            String password,
+            String username,
+            String firstName,
+            String lastName,
+            Collection<GrantedAuthority> authorities
+    ) {
+        this.id = id;
+        this.password = password;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.authorities = authorities;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -36,23 +52,6 @@ public class LetsCookUserDetails implements UserDetails {
 
         return fullName.toString();
     }
-
-    public LetsCookUserDetails(
-            Long id,
-            String password,
-            String username,
-            String firstName,
-            String lastName,
-            Collection<GrantedAuthority> authorities
-    ) {
-        this.id = id;
-        this.password = password;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.authorities = authorities;
-    }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

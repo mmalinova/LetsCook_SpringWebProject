@@ -4,12 +4,8 @@ import bg.project.letscook.exception.ObjectNotFoundException;
 import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
 import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
-import bg.project.letscook.model.enums.SubcategoryEnum;
 import bg.project.letscook.service.CategoryService;
 import bg.project.letscook.service.RecipeService;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -59,14 +55,14 @@ public class RecipeController {
 
     @GetMapping("/recipes_dashboard/category/{category}")
     public String getAllRecipesByCategory(@PathVariable("category") String category,
-                                             Model model) {
+                                          Model model) {
         model.addAttribute("recipes", recipeService.getRecipesByCategory(category));
         return "recipes_dashboard";
     }
 
     @GetMapping("/recipes_dashboard/vegetarian/{vegetarian}")
     public String getAllDinnerRecipesByVegetarian(@PathVariable("vegetarian") int isVegetarian,
-                                             Model model) {
+                                                  Model model) {
         model.addAttribute("recipes", recipeService.getRecipesByVegetarian(isVegetarian > 0));
         return "recipes_dashboard";
     }
@@ -110,7 +106,7 @@ public class RecipeController {
 
     @GetMapping("/recipes_dashboard/{id}")
     public String getRecipeDetail(@PathVariable("id") Long id,
-                                 Model model) {
+                                  Model model) {
 
         var recipeDto =
                 recipeService.findRecipeById(id).

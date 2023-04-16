@@ -42,9 +42,9 @@ public class RecipeEntity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
-    @OneToMany(mappedBy = "recipeId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ImageEntity> images = new HashSet<>();
-    @OneToMany(mappedBy = "recipeId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private Set<CommentEntity> comments = new HashSet<>();
 
     public String getName() {

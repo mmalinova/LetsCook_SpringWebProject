@@ -5,10 +5,10 @@ import bg.project.letscook.model.entity.RecipeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface CommentRepository extends JpaRepository<CommentEntity, Long> {
-    Optional<List<CommentEntity>> findAllByRecipeId(RecipeEntity recipe);
+
+    Set<CommentEntity> findAllByRecipe(RecipeEntity recipe);
 }

@@ -19,7 +19,7 @@
 <body>
 <!-- Navigation -->
 <th:block sec:authorize="isAuthenticated()">
-    <a id="welcome" class="text-white" th:href="@{/user/profile}">
+    <a class="text-white" id="welcome" th:href="@{/user/profile}">
         <th:block
                 th:text="#{navbar_welcome(${#authentication.principal.fullName})}">
         </th:block>
@@ -42,10 +42,12 @@
         <li><a class="active" id="icon" th:href="@{/}">
             <img alt="logo" id="logo" src="/images/logo.png">
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard/category/ЗАКУСКА}"><th:block th:text="#{navbar_breakfast}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ЗАКУСКА}">
+            <th:block th:text="#{navbar_breakfast}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ЗАКУСКА}" th:text="#{navbar_breakfasts}">Закуски</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ЗАКУСКА}"
+                       th:text="#{navbar_breakfasts}">Закуски</a>
                 </li>
                 <li>
                     <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/БАНИЦА}"
@@ -57,7 +59,8 @@
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard/category/ОБЯД}"><th:block th:text="#{navbar_lunch}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ОБЯД}">
+            <th:block th:text="#{navbar_lunch}"></th:block> &#x2771;
             <ul>
                 <li>
                     <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/СУПА}"
@@ -69,10 +72,12 @@
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard/category/ВЕЧЕРЯ}"><th:block th:text="#{navbar_dinner}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ВЕЧЕРЯ}">
+            <th:block th:text="#{navbar_dinner}"></th:block> &#x2771;
             <ul>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/vegetarian/0}" th:text="#{navbar_meat_dishes}">Ястия
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/vegetarian/0}"
+                       th:text="#{navbar_meat_dishes}">Ястия
                         с месо</a>
                 </li>
                 <li>
@@ -81,17 +86,20 @@
                 </li>
             </ul>
         </a></li>
-        <li><a th:href="@{/recipes/recipes_dashboard/category/ДЕСЕРТ}"><th:block th:text="#{navbar_dessert}"></th:block> &#x2771;
+        <li><a th:href="@{/recipes/recipes_dashboard/category/ДЕСЕРТ}">
+            <th:block th:text="#{navbar_dessert}"></th:block> &#x2771;
             <ul>
                 <li>
                     <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/КРЕМ}"
                        th:text="#{navbar_creams}">Кремове</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat"  th:href="@{/recipes/recipes_dashboard/subcategory/КЕКС}" th:text="#{navbar_muffins}">Кексове</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/КЕКС}"
+                       th:text="#{navbar_muffins}">Кексове</a>
                 </li>
                 <li>
-                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/СЛАДКИШ}" th:text="#{navbar_sweets}">Сладкиши</a>
+                    <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/СЛАДКИШ}"
+                       th:text="#{navbar_sweets}">Сладкиши</a>
                 </li>
                 <li>
                     <a class="search-by-subcat" th:href="@{/recipes/recipes_dashboard/subcategory/ТОРТА}"
@@ -117,12 +125,12 @@
                     <input class="logoutBtn" th:value="#{navbar_logout}" type="submit">
                 </form>
             </li>
-<!--            <li class="profile" style="width: 80px; float: right; margin-right: 5px;">-->
-<!--                <a th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_favorite_recipes}">Любими рецепти</a>-->
-<!--            </li>-->
-<!--            <li class="profile" style="display: inline; width: 80px; float: right; margin-right: 5px;">-->
-<!--                <a th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_my_recipes}">Моите рецепти</a>-->
-<!--            </li>-->
+            <!--            <li class="profile" style="width: 80px; float: right; margin-right: 5px;">-->
+            <!--                <a th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_favorite_recipes}">Любими рецепти</a>-->
+            <!--            </li>-->
+            <!--            <li class="profile" style="display: inline; width: 80px; float: right; margin-right: 5px;">-->
+            <!--                <a th:href="@{/recipes/recipes_dashboard}" th:text="#{navbar_my_recipes}">Моите рецепти</a>-->
+            <!--            </li>-->
             <li class="profile" style="display: inline; width: 80px; float: right; margin-right: 5px;">
                 <a th:href="@{/recipes/recipe_add}" th:text="#{navbar_add_recipe}">Добави рецепта</a>
             </li>

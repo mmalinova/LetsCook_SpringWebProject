@@ -9,7 +9,7 @@ public class ImageEntity extends BaseEntity {
     private String imageURL;
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
-    private RecipeEntity recipeId;
+    private RecipeEntity recipe;
 
     public String getImageURL() {
         return imageURL;
@@ -20,12 +20,12 @@ public class ImageEntity extends BaseEntity {
         return this;
     }
 
-    public RecipeEntity getRecipeId() {
-        return recipeId;
+    public RecipeEntity getRecipe() {
+        return recipe;
     }
 
-    public ImageEntity setRecipeId(RecipeEntity recipeId) {
-        this.recipeId = recipeId;
+    public ImageEntity setRecipe(RecipeEntity recipe) {
+        this.recipe = recipe;
         return this;
     }
 }

@@ -30,22 +30,23 @@ public class SecurityConfig {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
 //                requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll().
-                        antMatchers(
-                                "/",
-                        "/user/login",
-                        "/user/register",
-                        "/error",
-                        "/info",
-                        "/terms_of_use",
-                        "/data_policy",
-                        "/contacts",
-                        "/user/profile",
-                        "/recipes/recipe_details",
-                        "/recipes/recipe_search",
-                        "/recipes/recipes_dashboard/**",
-                        "/recipes/evict",
-                        "/maintenance"
-                        ).permitAll().
+        antMatchers(
+        "/",
+        "/user/login",
+        "/user/register",
+        "/error",
+        "/info",
+        "/terms_of_use",
+        "/data_policy",
+        "/contacts",
+        "/user/profile",
+        "/recipes/recipe_details",
+        "/recipes/recipe_search",
+        "/recipes/recipes_dashboard/**",
+        "/recipes/evict",
+        "/maintenance",
+        "/api/**"
+).permitAll().
                 antMatchers(
                         "/recipe/recipe_add",
                         "user/profile_edit"
@@ -77,7 +78,7 @@ public class SecurityConfig {
                         invalidateHttpSession(true).
                 deleteCookies("JSESSIONID");
 //                and().
-                // allow oauth login
+        // allow oauth login
 //                        oauth2Login().
 //                loginPage("/user/login").
 //                successHandler(oAuthSuccessHandler);

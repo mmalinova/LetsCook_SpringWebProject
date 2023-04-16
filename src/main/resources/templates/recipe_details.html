@@ -9,10 +9,13 @@
     <meta content="рецепти, готварски рецепти, кулинарни рецепти, готвене, какво да сготвя, храна" name="keywords">
     <meta content="Готварски рецепти със снимки, необходими продукти, порции, време за приготвяне и стъпки, които да следваш, за да сготвиш своето ястие."
           property="description">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <link href="/images/icon.png" rel="icon" type="image/x-icon">
     <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script th:src="@{/js/comments.js}" type="module"></script>
 
     <title>Да сготвим - Детайли</title>
 </head>
@@ -24,6 +27,7 @@
 
 </div>
 <hr style="width:100%;text-align:left;margin-left:0">
+<input type="hidden" name="recipeId" id="recipeId" th:value="${recipe.id}">
 <main class="page" th:object="${recipe}">
     <div class="recipe-page" id="recipe-dash">
         <section class="recipe-hero">
@@ -102,6 +106,34 @@
                     </th:block>
                 </div>
             </article>
+        </section>
+        <section class="comments" style="margin-top: -100px">
+            <h4>КОМЕНТАРИ:</h4>
+            <div>
+                <!-- Comments submission -->
+                <form action="/" id="commentForm" method="POST">
+                    <div class="form-group">
+                        <h4 style="margin-top: -30px; margin-bottom: -2px">Напиши коментар:</h4>
+                        <textarea class="form-control"
+                                  cols="20"
+                                  id="message"
+                                  name="message"
+                                  rows="5"
+                                  style="background-color: rgb(255, 211, 158); width: 70%"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="post-comment-btn"
+                               id="postComment"
+                               type="submit"
+                               value="Post Comment"/>
+                    </div>
+                </form>
+                <!-- Comments submission -->
+            </div>
+            <!-- All comments section -->
+            <div>
+                <span id="commentCnr"></span>
+            </div>
         </section>
     </div>
 </main>

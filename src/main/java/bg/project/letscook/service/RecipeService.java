@@ -19,7 +19,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -112,7 +115,7 @@ public class RecipeService {
     }
 
     public void addRecipe(CreateRecipeDTO addRecipeDTO, UserDetails userDetails) {
-        long millis=System.currentTimeMillis();
+        long millis = System.currentTimeMillis();
         Date date = new Date(millis);
         ImageEntity image = new ImageEntity();
 
@@ -131,17 +134,17 @@ public class RecipeService {
         RecipeEntity r = recipeRepository.save(newRecipe);
         if (!addRecipeDTO.getFirstImage().isEmpty()) {
             image.setImageURL(addRecipeDTO.getFirstImage());
-            image.setRecipeId(r);
+            image.setRecipe(r);
             imageRepository.save(image);
         }
         if (!addRecipeDTO.getSecondImage().isEmpty()) {
             image.setImageURL(addRecipeDTO.getSecondImage());
-            image.setRecipeId(r);
+            image.setRecipe(r);
             imageRepository.save(image);
         }
         if (!addRecipeDTO.getThirdImage().isEmpty()) {
             image.setImageURL(addRecipeDTO.getThirdImage());
-            image.setRecipeId(r);
+            image.setRecipe(r);
             imageRepository.save(image);
         }
     }

@@ -5,8 +5,6 @@ import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionOperations;
 import org.springframework.security.core.Authentication;
 
-import java.util.UUID;
-
 public class OwnerSecurityExpressionRoot extends SecurityExpressionRoot
         implements MethodSecurityExpressionOperations {
 
@@ -45,23 +43,23 @@ public class OwnerSecurityExpressionRoot extends SecurityExpressionRoot
     }
 
     @Override
-    public void setFilterObject(Object filterObject) {
-        this.filterObject = filterObject;
-    }
-
-    @Override
     public Object getFilterObject() {
         return filterObject;
     }
 
     @Override
-    public void setReturnObject(Object returnObject) {
-        this.returnObject = returnObject;
+    public void setFilterObject(Object filterObject) {
+        this.filterObject = filterObject;
     }
 
     @Override
     public Object getReturnObject() {
         return this.returnObject;
+    }
+
+    @Override
+    public void setReturnObject(Object returnObject) {
+        this.returnObject = returnObject;
     }
 
     @Override

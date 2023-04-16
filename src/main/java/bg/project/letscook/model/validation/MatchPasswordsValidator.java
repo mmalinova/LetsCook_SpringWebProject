@@ -37,7 +37,8 @@ public class MatchPasswordsValidator implements ConstraintValidator<MatchPasswor
             context.buildConstraintViolationWithTemplate(message)
                     .addPropertyNode(second)
                     .addConstraintViolation()
-                    .disableDefaultConstraintViolation();;
+                    .disableDefaultConstraintViolation();
+            ;
         }
 
         return valid;

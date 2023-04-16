@@ -14,10 +14,10 @@ public class CommentEntity extends BaseEntity {
     private boolean approved;
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
-    private UserEntity ownerId;
+    private UserEntity owner;
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
-    private RecipeEntity recipeId;
+    private RecipeEntity recipe;
 
     public String getText() {
         return text;
@@ -46,21 +46,21 @@ public class CommentEntity extends BaseEntity {
         return this;
     }
 
-    public UserEntity getOwnerId() {
-        return ownerId;
+    public UserEntity getOwner() {
+        return owner;
     }
 
-    public CommentEntity setOwnerId(UserEntity ownerId) {
-        this.ownerId = ownerId;
+    public CommentEntity setOwner(UserEntity owner) {
+        this.owner = owner;
         return this;
     }
 
-    public RecipeEntity getRecipeId() {
-        return recipeId;
+    public RecipeEntity getRecipe() {
+        return recipe;
     }
 
-    public CommentEntity setRecipeId(RecipeEntity recipeId) {
-        this.recipeId = recipeId;
+    public CommentEntity setRecipe(RecipeEntity recipe) {
+        this.recipe = recipe;
         return this;
     }
 }
