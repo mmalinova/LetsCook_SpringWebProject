@@ -31,7 +31,7 @@ window.addEventListener('load', (event) => {
 
 function loadRecipes() {
     let ul = document.getElementById('last-added-recipes');
-    fetch("http://localhost/programming/Let'sCook/api/recipe/read.php", {
+    fetch("http://localhost/programming/Let'sCook/api/recipe/read_recipe.php", {
         method: 'GET',
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
@@ -50,7 +50,7 @@ function loadRecipes() {
             const recipe = jsonData[i];
             let name = recipe.name;
             let recipe_id = recipe.id;
-            fetch("http://localhost/programming/Let'sCook/api/photo/read.php?recipe_id=" + recipe_id, {
+            fetch("http://localhost/programming/Let'sCook/api/photo/read_photo.php?recipe_id=" + recipe_id, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json; charset=UTF-8",
