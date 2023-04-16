@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("recipes")
@@ -79,6 +81,9 @@ public class RecipeController {
 
         if (recipeDto.isVegetarian()) recipeDto.setVegetarianString("Да");
         else recipeDto.setVegetarianString("Не");
+
+        recipeDto.setSplitSteps(Arrays.stream(recipeDto.getSteps().split("\\r?\\n")).collect(Collectors.toSet()));
+
         model.addAttribute("recipe", recipeDto);
 
         return "recipe_details";

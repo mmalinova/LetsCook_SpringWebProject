@@ -18,9 +18,18 @@ public class RecipeDetailDTO {
     private String ownerFirstName;
     private String ownerLastName;
     private String vegetarianString;
+    private Set<String> splitSteps;
 
 
     public RecipeDetailDTO() {
+    }
+
+    public Set<String> getSplitSteps() {
+        return splitSteps;
+    }
+
+    public void setSplitSteps(Set<String> splitSteps) {
+        this.splitSteps = splitSteps;
     }
 
     public String getVegetarianString() {
