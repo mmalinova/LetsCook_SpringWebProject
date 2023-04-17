@@ -25,31 +25,9 @@ window.addEventListener('load', (event) => {
                         "Content-Type": "application/json; charset=UTF-8",
                     },
                     body: JSON.stringify(object)
-                }).then(function (response) {
-                    if (response.status !== 200) {
-                        alert('Проблем с кода от заявката');
-                        return;
-                    }
-                    // Examine the text in the response
-                    return response.text();
-                }).then(function (text) {
-                    if (text !== undefined) {
-                        if (text.includes("email")) {
-                            event.target.reset();
-                            return alert('Невалиден имейл адрес!');
-                        } else if (text.includes("name")) {
-                            event.target.reset();
-                            return alert('Невалидно име!');
-                        } else if (text.includes("message")) {
-                            event.target.reset();
-                            return alert('Невалидно съобщение!');
-                        } else if (text.includes("thanks")) {
-                            event.target.reset();
-                            alert('Благодарим за обартната връзка. Тя е важна за нас. &#128578');
-                            //redirect to home page
-                            document.location.href = "./index.html";
-                        }
-                    }
+                }).then(function () {
+                    event.target.reset();
+                    alert('Благодарим за обартната връзка. Тя е важна за нас.');
                 }).catch(function (error) {
                     alert(error);
                 });
