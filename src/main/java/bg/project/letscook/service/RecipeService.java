@@ -34,7 +34,6 @@ public class RecipeService {
     private final CategoryRepository categoryRepository;
     private final CommentRepository commentRepository;
     private final RecipeMapper recipeMapper;
-    private final CategoryEntity categoryEntity = new CategoryEntity();
 
     public RecipeService(RecipeRepository recipeRepository, UserRepository userRepository, ImageRepository imageRepository, CategoryRepository categoryRepository, CommentRepository commentRepository, RecipeMapper recipeMapper) {
         this.recipeRepository = recipeRepository;
@@ -125,7 +124,7 @@ public class RecipeService {
         UserEntity owner = userRepository.findByEmail(userDetails.getUsername()).
                 orElseThrow();
 
-        categoryEntity.setCategory(addRecipeDTO.getCategory());
+        CategoryEntity categoryEntity = categoryRepository.findByCategory(addRecipeDTO.getCategory()).orElseThrow();
         newRecipe.setCategory(categoryEntity);
         newRecipe.setCreatedOn(date);
         newRecipe.setApproved(true);

@@ -21,7 +21,7 @@
 <th:block sec:authorize="isAuthenticated()">
     <a class="text-white" id="welcome" th:href="@{/user/profile}">
         <th:block
-                th:text="#{navbar_welcome(${#authentication.principal.fullName})}">
+                th:text="#{navbar_welcome(${#authentication.principal.firstName})}">
         </th:block>
     </a>
 </th:block>
