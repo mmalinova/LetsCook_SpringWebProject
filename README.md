@@ -73,7 +73,7 @@ For this purpose I use a WAMP server. However, a few additional settings are req
 The other important setting related to sending Emails is to take the .php files `read_recipe.php`, `read_photo.php`, `Databse.php`, `Recipe.php`, `Photo.php` and `feedback.php` and upload them to the server folder (such as WAMP server) on your computer.
 Also, one of the files `feedback.php` requires an external library PHPMailer, which you can find in the Additional Links and Resources below.
 
-####IMPORTANT
+### IMPORTANT
 
 In order the database to be able to save Bulgarian/Cyrillic words and symbols it should be created with `utf8mb4_general_ci` encoding!
 
