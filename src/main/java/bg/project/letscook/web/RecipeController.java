@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -87,7 +88,7 @@ public class RecipeController {
     public String addRecipe(@Valid CreateRecipeDTO addRecipeDTO,
                             BindingResult bindingResult,
                             RedirectAttributes redirectAttributes,
-                            @AuthenticationPrincipal UserDetails userDetails) {
+                            @AuthenticationPrincipal UserDetails userDetails) throws IOException {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addRecipeModel", addRecipeDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addRecipeModel", bindingResult);

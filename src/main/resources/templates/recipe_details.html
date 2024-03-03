@@ -98,7 +98,7 @@
                              class="icon_image" src="https://www.supichka.com/assets/images/products_icon--sm.png">
                         НЕОБХОДИМИ СЪСТАВКИ:
                     </h4>
-                    <th:block th:each="ingredient : ${#strings.arraySplit(recipe.ingredients, ', ')}">
+                    <th:block th:each="ingredient : ${#strings.arraySplit(recipe.ingredients, ',')}">
                         <p class="single-ingredient">
                             &#10004;&#65039;
                             <th:block th:text="${ingredient}"></th:block>
@@ -125,7 +125,7 @@
                         <input class="post-comment-btn"
                                id="postComment"
                                type="submit"
-                               value="Post Comment"/>
+                               value="Изпращане"/>
                     </div>
                 </form>
                 <!-- Comments submission -->

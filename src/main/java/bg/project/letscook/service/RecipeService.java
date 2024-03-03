@@ -1,5 +1,6 @@
 package bg.project.letscook.service;
 
+import bg.project.letscook.config.CloudinaryConfig;
 import bg.project.letscook.model.dto.recipe.CreateRecipeDTO;
 import bg.project.letscook.model.dto.recipe.RecipeDetailDTO;
 import bg.project.letscook.model.dto.recipe.SearchRecipeDTO;
@@ -19,10 +20,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +33,7 @@ public class RecipeService {
     private final CategoryRepository categoryRepository;
     private final CommentRepository commentRepository;
     private final RecipeMapper recipeMapper;
+    private final CloudinaryConfig cloudinary = new CloudinaryConfig();
 
     public RecipeService(RecipeRepository recipeRepository, UserRepository userRepository, ImageRepository imageRepository, CategoryRepository categoryRepository, CommentRepository commentRepository, RecipeMapper recipeMapper) {
         this.recipeRepository = recipeRepository;
@@ -113,7 +113,7 @@ public class RecipeService {
                 map(recipeMapper::recipeEntityToRecipeDetailDTO);
     }
 
-    public void addRecipe(CreateRecipeDTO addRecipeDTO, UserDetails userDetails) {
+    public void addRecipe(CreateRecipeDTO addRecipeDTO, UserDetails userDetails) throws IOException {
         long millis = System.currentTimeMillis();
         Date date = new Date(millis);
         ImageEntity image = new ImageEntity();
@@ -127,12 +127,14 @@ public class RecipeService {
         CategoryEntity categoryEntity = categoryRepository.findByCategory(addRecipeDTO.getCategory()).orElseThrow();
         newRecipe.setCategory(categoryEntity);
         newRecipe.setCreatedOn(date);
-        newRecipe.setApproved(true);
+        newRecipe.setApproved(false);
         newRecipe.setOwner(owner);
 
         RecipeEntity r = recipeRepository.save(newRecipe);
         if (!addRecipeDTO.getFirstImage().isEmpty()) {
-            image.setImageURL(addRecipeDTO.getFirstImage());
+            Map uploadResult = cloudinary.cloudinary.uploader().upload(addRecipeDTO.getFirstImage(), cloudinary.params);
+            String g = (String) uploadResult.get("secure_url");
+            image.setImageURL(g);
             image.setRecipe(r);
             imageRepository.save(image);
         }
